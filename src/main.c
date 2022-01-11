@@ -10,14 +10,43 @@ uint16_t blobbo_location_x;
 uint16_t blobbo_location_y;
 uint16_t movement_cooldown;
 
-uint8_t BLOBBO_SPEED = 1;
+const uint8_t BLOBBO_SPEED = 1;
+
+uint16_t LEFT_WALL;
+uint16_t RIGHT_WALL;
 
 
 // typedef struct icon_info_ {
 //     uint8_t
 // }
 
+void init_console_specific_vals() {
+    // Debug code
+    #if defined(__TARGET_gg)
+        puts("game gear");
+        LEFT_WALL = 0;
+        RIGHT_WALL = DEVICE_SCREEN_PX_WIDTH + 10;
+
+    #elif defined(__TARGET_gb)
+        puts("game boy");
+        LEFT_WALL = 6;
+        RIGHT_WALL = DEVICE_SCREEN_PX_WIDTH;
+
+    #elif defined(__TARGET_sms)
+        puts("game sms");
+        LEFT_WALL = 0;
+        RIGHT_WALL = DEVICE_SCREEN_PX_WIDTH - 8;
+
+    #else
+        puts("unrecognized system");
+    #endif
+
+}
+
+
 void init() {
+    init_console_specific_vals();
+
     // Center starting position
     blobbo_location_x = DEVICE_SCREEN_PX_WIDTH / 2;
     blobbo_location_y = DEVICE_SCREEN_PX_HEIGHT / 2;
@@ -29,17 +58,6 @@ void init() {
 	set_sprite_data(0, 20, blobbo_sprite);
     set_sprite_tile(0, 8);
 
-    // Debug code
-    #if defined(__TARGET_gg)
-        puts("game gear");
-    #elif defined(__TARGET_gb)
-        puts("game boy");
-    #elif defined(__TARGET_sms)
-        puts("game sms");
-    #else
-        puts("unrecognized system");
-    #endif
-
     SHOW_BKG;
     SHOW_SPRITES;
 }
@@ -49,10 +67,10 @@ void main(void) {
 
     while(TRUE) { 
         if (movement_cooldown == 200) {
-            if (joypad() & J_RIGHT) {
+            if (joypad() & J_RIGHT && blobbo_location_x < RIGHT_WALL) {
                 blobbo_location_x += BLOBBO_SPEED;
             }
-            if (joypad() & J_LEFT) {
+            if (joypad() & J_LEFT && blobbo_location_x > LEFT_WALL) {
                 blobbo_location_x -= BLOBBO_SPEED;
             }
             if (joypad() & J_UP) {
