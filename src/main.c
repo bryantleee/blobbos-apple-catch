@@ -8,7 +8,7 @@
 
 uint16_t blobbo_location_x;
 uint16_t blobbo_location_y;
-uint16_t movement_cooldown;
+uint8_t movement_cooldown;
 
 const uint8_t BLOBBO_SPEED = 1;
 
@@ -64,21 +64,24 @@ void main(void) {
 
     // game loop
     while(TRUE) { 
-        if(joypad() & J_A) {
+        
+        uint8_t j_input = joypad();
+
+        if(j_input & J_A) {
             printf("%u, %u\n", (unsigned int)blobbo_location_x, (unsigned int)blobbo_location_y);
         }
 
         if (movement_cooldown == 200) {
-            if (joypad() & J_RIGHT && blobbo_location_x < RIGHT_WALL) {
+            if (j_input & J_RIGHT && blobbo_location_x < RIGHT_WALL) {
                 blobbo_location_x += BLOBBO_SPEED;
             }
-            if (joypad() & J_LEFT && blobbo_location_x > LEFT_WALL) {
+            else if (j_input & J_LEFT && blobbo_location_x > LEFT_WALL) {
                 blobbo_location_x -= BLOBBO_SPEED;
             }
-            if (joypad() & J_UP) {
+            if (j_input & J_UP) {
                 blobbo_location_y -= BLOBBO_SPEED;
             }
-            if (joypad() & J_DOWN) {
+            else if (j_input & J_DOWN) {
                 blobbo_location_y += BLOBBO_SPEED;
             }
             movement_cooldown = 0;
