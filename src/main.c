@@ -15,32 +15,29 @@ const uint8_t BLOBBO_SPEED = 1;
 uint16_t LEFT_WALL;
 uint16_t RIGHT_WALL;
 
-
-// typedef struct icon_info_ {
-//     uint8_t
+// typedef struct blobbo {
+//     uint16_t location_x, location_y;
+//     uint8_t movement_cooldown;
 // }
 
 void init_console_specific_vals() {
-    // Debug code
-    #if defined(__TARGET_gg)
-        puts("game gear");
-        LEFT_WALL = 0;
-        RIGHT_WALL = DEVICE_SCREEN_PX_WIDTH + 10;
+    LEFT_WALL = DEVICE_SPRITE_PX_OFFSET_X;
+    RIGHT_WALL = DEVICE_SCREEN_PX_WIDTH + DEVICE_SPRITE_PX_OFFSET_X - 8;
 
-    #elif defined(__TARGET_gb)
-        puts("game boy");
-        LEFT_WALL = 6;
-        RIGHT_WALL = DEVICE_SCREEN_PX_WIDTH;
+    #if defined(__TARGET_gb)
+    puts("game boy");
+
+    #elif defined(__TARGET_gg)
+    puts("game gear");
 
     #elif defined(__TARGET_sms)
-        puts("game sms");
-        LEFT_WALL = 0;
-        RIGHT_WALL = DEVICE_SCREEN_PX_WIDTH - 8;
+    puts("master system");
 
     #else
-        puts("unrecognized system");
+    puts("unrecognized system");
     #endif
 
+    printf("%u, %u\n", (unsigned int)DEVICE_SCREEN_PX_WIDTH, (unsigned int)LEFT_WALL);
 }
 
 
@@ -48,8 +45,8 @@ void init() {
     init_console_specific_vals();
 
     // Center starting position
-    blobbo_location_x = DEVICE_SCREEN_PX_WIDTH / 2;
-    blobbo_location_y = DEVICE_SCREEN_PX_HEIGHT / 2;
+    blobbo_location_x = (DEVICE_SCREEN_PX_WIDTH + DEVICE_SPRITE_PX_OFFSET_X) / 2;
+    blobbo_location_y = (DEVICE_SCREEN_PX_HEIGHT + DEVICE_SPRITE_PX_OFFSET_Y) / 2;
 
     // Set sprites to 8x8 mode
     SPRITES_8x8;
@@ -65,7 +62,12 @@ void init() {
 void main(void) {
     init();
 
+    // game loop
     while(TRUE) { 
+        if(joypad() & J_A) {
+            printf("%u, %u\n", (unsigned int)blobbo_location_x, (unsigned int)blobbo_location_y);
+        }
+
         if (movement_cooldown == 200) {
             if (joypad() & J_RIGHT && blobbo_location_x < RIGHT_WALL) {
                 blobbo_location_x += BLOBBO_SPEED;
