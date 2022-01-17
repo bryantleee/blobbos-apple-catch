@@ -8,9 +8,10 @@
 
 uint16_t blobbo_location_x;
 uint16_t blobbo_location_y;
-uint8_t movement_cooldown;
+uint8_t movement_cooldown_timer;
 
 const uint8_t BLOBBO_SPEED = 1;
+const uint8_t MOVEMENT_COOLDOWN_TIME = 70;
 
 uint16_t LEFT_WALL;
 uint16_t RIGHT_WALL;
@@ -19,6 +20,12 @@ uint16_t RIGHT_WALL;
 //     uint16_t location_x, location_y;
 //     uint8_t movement_cooldown;
 // }
+
+// TODO: figure out how to work with the struct and set/get values from it... 
+// TODO: figure out how to store it in a different file
+// TODO: complete the blobbo sprite and left/right movement
+
+// TODO: figure out how to more smoothly animate blobbo/match his speed/feel from the original
 
 void init_console_specific_vals() {
     LEFT_WALL = DEVICE_SPRITE_PX_OFFSET_X;
@@ -71,7 +78,7 @@ void main(void) {
             printf("%u, %u\n", (unsigned int)blobbo_location_x, (unsigned int)blobbo_location_y);
         }
 
-        if (movement_cooldown == 200) {
+        if (movement_cooldown_timer == MOVEMENT_COOLDOWN_TIME) {
             if (j_input & J_RIGHT && blobbo_location_x < RIGHT_WALL) {
                 blobbo_location_x += BLOBBO_SPEED;
             }
@@ -84,9 +91,9 @@ void main(void) {
             else if (j_input & J_DOWN) {
                 blobbo_location_y += BLOBBO_SPEED;
             }
-            movement_cooldown = 0;
+            movement_cooldown_timer = 0;
         } else {
-            movement_cooldown ++;
+            movement_cooldown_timer ++;
         }
 
         move_sprite(0, blobbo_location_x, blobbo_location_y);
