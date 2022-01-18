@@ -12,6 +12,8 @@
 #include "../res/blobbo_sprite.h"
 #include "blobbo.h"
 
+const uint8_t BLOBBO_SPEED = 2;
+
 void set_blobbo_location(uint16_t x, uint16_t y) {
     uint8_t x1 = x + 8;
     uint8_t y1 = y + 8;

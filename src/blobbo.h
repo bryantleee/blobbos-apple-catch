@@ -1,12 +1,10 @@
 #ifndef BLOBBO_H_
 #define BLOBBO_H_
 
-#define BLOBBO_SPEED 1;
-#define BLOBBO_MOVEMENT_COOLDOWN_TIME 70;
+extern const uint8_t BLOBBO_SPEED;
 
 struct Blobbo {
     uint16_t x, y;
-    uint8_t movement_cooldown_timer;
     uint8_t state;
 };
 
