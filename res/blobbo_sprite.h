@@ -1,6 +1,6 @@
 /*
 
- BLOB.H
+ BLOBBO_SPRITE.H
 
  Include File.
 
@@ -29,4 +29,4 @@
 extern const const unsigned char blobbo_sprite[];
 // extern unsigned char blobbo_sprite[];
 
-/* End of BLOB.H */
+/* End of BLOBBO_SPRITE.H */

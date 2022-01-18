@@ -1,6 +1,6 @@
 /*
 
- BLOB.C
+ BLOBBO_SPRITE.C
 
  Tile Source File.
 
@@ -67,4 +67,4 @@ unsigned char blobbo_sprite[] =
   0xFF,0x05,0xFF,0x05,0xFF,0x03,0xFF,0xFF
 };
 
-/* End of BLOB.C */
+/* End of BLOBBO_SPRITE.C */
