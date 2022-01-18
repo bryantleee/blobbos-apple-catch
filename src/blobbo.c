@@ -47,8 +47,8 @@ void set_blobbo_forward() {
 void set_blobbo_crouching() {
 	set_sprite_tile(BLOBBO_SPRITE_TL, 18);
 	set_sprite_tile(BLOBBO_SPRITE_TR, 18);
-	set_sprite_tile(BLOBBO_SPRITE_BL ,17);
-	set_sprite_tile(BLOBBO_SPRITE_BR, 19);
+	set_sprite_tile(BLOBBO_SPRITE_BL, 16);
+	set_sprite_tile(BLOBBO_SPRITE_BR, 17);
 }
 
 void set_blobbo_half_crouching() {
@@ -60,7 +60,7 @@ void set_blobbo_half_crouching() {
 
 void init_blobbo(struct blobbo_t *blobbo) {
     // Load the Blobbo tiles into VRAM
-	set_sprite_data(0, 20, blobbo_sprite);
+	set_sprite_data(0, 19, blobbo_sprite);
 
 	// Start facing forward
 	set_blobbo_forward();

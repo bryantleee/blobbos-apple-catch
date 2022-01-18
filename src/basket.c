@@ -26,9 +26,9 @@ void update_basket_location(struct blobbo_t *blobbo, struct basket_t *basket) {
 
 void init_basket(struct blobbo_t *blobbo, struct basket_t *basket) {
     // Load the basket tiles into VRAM
-	set_sprite_data(20, 2, basket_sprite);
-    set_sprite_tile(BASKET_SPRITE_L, 20);
-    set_sprite_tile(BASKET_SPRITE_R, 21);
+	set_sprite_data(19, 2, basket_sprite);
+    set_sprite_tile(BASKET_SPRITE_L, 19);
+    set_sprite_tile(BASKET_SPRITE_R, 20);
     
     update_basket_location(blobbo, basket);
 }
