@@ -12,7 +12,8 @@
 #include "../res/blobbo_sprite.h"
 #include "blobbo.h"
 
-const uint8_t BLOBBO_SPEED = 2;
+const uint8_t BLOBBO_STAND_SPEED = 2;
+const uint8_t BLOBBO_CROUCH_SPEED = 2;
 
 void set_blobbo_location(uint16_t x, uint16_t y) {
     uint8_t x1 = x + 8;
@@ -24,42 +25,47 @@ void set_blobbo_location(uint16_t x, uint16_t y) {
 	move_sprite(3, x1, y1);
 }
 
-void set_blobbo_left(){
+void set_blobbo_left() {
 	set_sprite_tile(0, 4);
 	set_sprite_tile(1, 6);
 	set_sprite_tile(2, 5);
 	set_sprite_tile(3, 7);
 }
 
-void set_blobbo_right(){
+void set_blobbo_right() {
 	set_sprite_tile(0, 0);
 	set_sprite_tile(1, 2);
 	set_sprite_tile(2, 1);
 	set_sprite_tile(3, 3);
 }
 
-void set_blobbo_forward(){
+void set_blobbo_forward() {
 	set_sprite_tile(0, 8);
 	set_sprite_tile(1, 10);
 	set_sprite_tile(2, 9);
 	set_sprite_tile(3, 11);
 }
 
-void set_blobbo_crouching(){
+void set_blobbo_crouching() {
 	set_sprite_tile(0, 18);
 	set_sprite_tile(1, 18);
 	set_sprite_tile(2 ,17);
 	set_sprite_tile(3, 19);
 }
 
-void set_blobbo_half_crouching(){
+void set_blobbo_half_crouching() {
 	set_sprite_tile(0, 12);
 	set_sprite_tile(1, 14);
 	set_sprite_tile(2, 13);
 	set_sprite_tile(3, 15);
 }
 
-void init_blobbo(struct Blobbo *blobbo) {
+void set_blobbo_sprite_direction(uint8_t j_input) {
+
+
+}
+
+void init_blobbo(struct blobbo_t *blobbo) {
     // Load the Blobbo sprite into VRAM & set it to 0 in the OAM
 	set_sprite_data(0, 20, blobbo_sprite);
 

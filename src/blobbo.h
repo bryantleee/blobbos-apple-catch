@@ -1,9 +1,10 @@
 #ifndef BLOBBO_H_
 #define BLOBBO_H_
 
-extern const uint8_t BLOBBO_SPEED;
+extern const uint8_t BLOBBO_STAND_SPEED;
+extern const uint8_t BLOBBO_CROUCH_SPEED;
 
-struct Blobbo {
+struct blobbo_t {
     uint16_t x, y;
     uint8_t state;
 };
@@ -20,6 +21,6 @@ void set_blobbo_crouching();
 
 void set_blobbo_half_crouching();
 
-void init_blobbo(struct Blobbo *blobbo);
+void init_blobbo(struct blobbo_t *blobbo);
 
 #endif

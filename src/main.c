@@ -8,10 +8,7 @@
 #include "init.h"
 
 
-struct Blobbo blobbo;
-
-// TODO: figure out how to more smoothly animate blobbo/match his speed/feel from the original
-
+struct blobbo_t blobbo;
 
 void init() {
     init_console_specific_vals();
@@ -26,16 +23,12 @@ void main(void) {
     while(TRUE) { 
         uint8_t j_input = joypad();
 
-        if(j_input & J_A) {
-            printf("%u, %u\n", (unsigned int)blobbo.x, (unsigned int)BLOBBO_SPEED);
-        }
-
         if(j_input & J_RIGHT && blobbo.x < RIGHT_WALL) {
-            blobbo.x += BLOBBO_SPEED;
+            blobbo.x += BLOBBO_STAND_SPEED;
             set_blobbo_right();
         }
         else if(j_input & J_LEFT && blobbo.x > LEFT_WALL) {
-            blobbo.x -= BLOBBO_SPEED;
+            blobbo.x -= BLOBBO_STAND_SPEED;
             set_blobbo_left();
         }
         else {

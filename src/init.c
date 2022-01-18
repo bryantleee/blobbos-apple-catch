@@ -10,7 +10,7 @@
 const uint16_t LEFT_WALL = DEVICE_SPRITE_PX_OFFSET_X;
 const uint16_t RIGHT_WALL = DEVICE_SCREEN_PX_WIDTH + DEVICE_SPRITE_PX_OFFSET_X - 8;
 
-void init_graphics(struct Blobbo *blobbo) {
+void init_graphics(struct blobbo_t *blobbo) {
     // Set sprites to 8x8 mode
 	SPRITES_8x8;
 	init_blobbo(blobbo);
