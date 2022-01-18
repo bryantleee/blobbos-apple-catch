@@ -3,6 +3,9 @@
 
 #include "blobbo.h"
 
+#define BASKET_SPRITE_L 4
+#define BASKET_SPRITE_R 5
+
 struct basket_t {
     uint16_t x, y;
 };

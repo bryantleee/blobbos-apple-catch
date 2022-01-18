@@ -8,6 +8,13 @@
 #include "apple.h"
 #include "arrow.h"
 
+/**
+    Blobbo is made of four 8x8 sprites mapped as follows:
+        sprite 0: top left quarter of body (tl)
+        sprite 1: top right quarter of body (tr)
+        sprite 2: bottom left quarter of body (bl)
+        sprite 3: bottom right quarter of body (br)
+**/
 
 // TODO: fix right wall for SMS
 

@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <gbdk/platform.h>
 
 #include "blobbo.h"
@@ -28,8 +27,8 @@ void update_basket_location(struct blobbo_t *blobbo, struct basket_t *basket) {
 void init_basket(struct blobbo_t *blobbo, struct basket_t *basket) {
     // Load the basket tiles into VRAM
 	set_sprite_data(21, 2, basket_sprite);
-    set_sprite_tile(4, 21);
-    set_sprite_tile(5, 22);
+    set_sprite_tile(BASKET_SPRITE_L, 21);
+    set_sprite_tile(BASKET_SPRITE_R, 22);
     
     update_basket_location(blobbo, basket);
 }

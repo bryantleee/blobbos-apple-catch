@@ -7,6 +7,11 @@
 #define HALF_CROUCH_STATE 1
 #define FULL_CROUCH_STATE 2
 
+#define BLOBBO_SPRITE_TL 0
+#define BLOBBO_SPRITE_TR 1
+#define BLOBBO_SPRITE_BL 2
+#define BLOBBO_SPRITE_BR 3
+
 extern const uint8_t BLOBBO_STAND_SPEED;
 extern const uint8_t BLOBBO_CROUCH_SPEED;
 
