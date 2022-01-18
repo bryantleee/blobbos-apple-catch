@@ -1,5 +1,5 @@
-#ifndef BLOBBO
-#define BLOBBO
+#ifndef BLOBBO_H_
+#define BLOBBO_H_
 
 #define BLOBBO_SPEED 1;
 #define BLOBBO_MOVEMENT_COOLDOWN_TIME 70;

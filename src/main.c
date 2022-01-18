@@ -8,9 +8,6 @@
 #include "init.h"
 
 
-const uint16_t LEFT_WALL = DEVICE_SPRITE_PX_OFFSET_X;
-const uint16_t RIGHT_WALL = DEVICE_SCREEN_PX_WIDTH + DEVICE_SPRITE_PX_OFFSET_X - 8;
-
 struct Blobbo blobbo;
 
 // TODO: figure out how to store it in a different file
@@ -21,11 +18,8 @@ struct Blobbo blobbo;
 
 void init() {
     init_console_specific_vals();
-
+    
     init_graphics(&blobbo);
-
-    // init screen borders
-    // TODO: fix left wall for SMS
 }
 
 void main(void) {
