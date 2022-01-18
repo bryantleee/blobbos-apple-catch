@@ -5,6 +5,9 @@
 
 #include "blobbo.h"
 #include "basket.h"
+#include "apple.h"
+#include "arrow.h"
+
 
 // TODO: fix right wall for SMS
 
@@ -14,8 +17,13 @@ const uint16_t RIGHT_WALL = DEVICE_SCREEN_PX_WIDTH + DEVICE_SPRITE_PX_OFFSET_X -
 void init_graphics(struct blobbo_t *blobbo, struct basket_t *basket) {
     // Set sprites to 8x8 mode
 	SPRITES_8x8;
+
 	init_blobbo(blobbo);
     init_basket(blobbo, basket);
+    init_apple();
+    init_arrow();
+
+    // init_arrow(blobbo, basket);
 
     SHOW_BKG;
     SHOW_SPRITES;
