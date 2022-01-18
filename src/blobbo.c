@@ -6,14 +6,14 @@
         sprite 3: bottom right quarter of body (br)
 **/
 #include <stdio.h>
-
 #include <gbdk/platform.h>
 
 #include "../res/blobbo_sprite.h"
 #include "blobbo.h"
 
+
 const uint8_t BLOBBO_STAND_SPEED = 2;
-const uint8_t BLOBBO_CROUCH_SPEED = 2;
+const uint8_t BLOBBO_CROUCH_SPEED = 1;
 
 void set_blobbo_location(uint16_t x, uint16_t y) {
     uint8_t x1 = x + 8;
@@ -60,10 +60,13 @@ void set_blobbo_half_crouching() {
 	set_sprite_tile(3, 15);
 }
 
-void set_blobbo_sprite_direction(uint8_t j_input) {
+// void set_blobbo_sprite_direction(uint8_t j_input, struct blobbo_t *blobbo) {
+// 	if(j_input & J_DOWN || j_input & J_B) {
+		
 
+// 	}
 
-}
+// }
 
 void init_blobbo(struct blobbo_t *blobbo) {
     // Load the Blobbo sprite into VRAM & set it to 0 in the OAM
@@ -72,8 +75,11 @@ void init_blobbo(struct blobbo_t *blobbo) {
 	// Start facing forward
 	set_blobbo_forward();
 
+	//start Blobbo at the center x coordinate of the screen
 	blobbo->x = (DEVICE_SCREEN_PX_WIDTH + DEVICE_SPRITE_PX_OFFSET_X) / 2;
-    blobbo->y = (DEVICE_SCREEN_PX_HEIGHT + DEVICE_SPRITE_PX_OFFSET_Y) / 2;
-
+    blobbo->y = 121; // (DEVICE_SCREEN_PX_HEIGHT + DEVICE_SPRITE_PX_OFFSET_Y) / 2;
+	blobbo->state = STANDING_STATE;
+	blobbo->state_timer = 0;
+	bool is_moving_down = FALSE;
 	set_blobbo_location(blobbo->x, blobbo->y);
 }
