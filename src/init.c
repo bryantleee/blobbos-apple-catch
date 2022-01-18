@@ -4,16 +4,18 @@
 #include <gbdk/console.h>
 
 #include "blobbo.h"
+#include "basket.h"
 
 // TODO: fix right wall for SMS
 
 const uint16_t LEFT_WALL = DEVICE_SPRITE_PX_OFFSET_X;
 const uint16_t RIGHT_WALL = DEVICE_SCREEN_PX_WIDTH + DEVICE_SPRITE_PX_OFFSET_X - 8;
 
-void init_graphics(struct blobbo_t *blobbo) {
+void init_graphics(struct blobbo_t *blobbo, struct basket_t *basket) {
     // Set sprites to 8x8 mode
 	SPRITES_8x8;
 	init_blobbo(blobbo);
+    init_basket(blobbo, basket);
 
     SHOW_BKG;
     SHOW_SPRITES;

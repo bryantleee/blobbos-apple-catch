@@ -16,7 +16,7 @@ struct blobbo_t {
     bool is_moving_down;
 };
 
-void set_blobbo_location(uint16_t x, uint16_t y);
+void set_blobbo_sprite_location(uint16_t x, uint16_t y);
 
 void set_blobbo_left();
 

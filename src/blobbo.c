@@ -1,3 +1,12 @@
+#include <stdio.h>
+#include <gbdk/platform.h>
+
+#include "../res/blobbo_sprite.h"
+#include "blobbo.h"
+
+const uint8_t BLOBBO_STAND_SPEED = 2;
+const uint8_t BLOBBO_CROUCH_SPEED = 1;
+
 /**
     Blobbo is made of four 8x8 sprites mapped as follows:
         sprite 0: top left quarter of body (tl)
@@ -5,17 +14,7 @@
         sprite 2: bottom left quarter of body (bl)
         sprite 3: bottom right quarter of body (br)
 **/
-#include <stdio.h>
-#include <gbdk/platform.h>
-
-#include "../res/blobbo_sprite.h"
-#include "blobbo.h"
-
-
-const uint8_t BLOBBO_STAND_SPEED = 2;
-const uint8_t BLOBBO_CROUCH_SPEED = 1;
-
-void set_blobbo_location(uint16_t x, uint16_t y) {
+void set_blobbo_sprite_location(uint16_t x, uint16_t y) {
     uint8_t x1 = x + 8;
     uint8_t y1 = y + 8;
 
@@ -60,16 +59,8 @@ void set_blobbo_half_crouching() {
 	set_sprite_tile(3, 15);
 }
 
-// void set_blobbo_sprite_direction(uint8_t j_input, struct blobbo_t *blobbo) {
-// 	if(j_input & J_DOWN || j_input & J_B) {
-		
-
-// 	}
-
-// }
-
 void init_blobbo(struct blobbo_t *blobbo) {
-    // Load the Blobbo sprite into VRAM & set it to 0 in the OAM
+    // Load the Blobbo tiles into VRAM
 	set_sprite_data(0, 20, blobbo_sprite);
 
 	// Start facing forward
@@ -81,5 +72,5 @@ void init_blobbo(struct blobbo_t *blobbo) {
 	blobbo->state = STANDING_STATE;
 	blobbo->state_timer = 0;
 	bool is_moving_down = FALSE;
-	set_blobbo_location(blobbo->x, blobbo->y);
+	set_blobbo_sprite_location(blobbo->x, blobbo->y);
 }

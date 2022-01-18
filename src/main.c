@@ -4,15 +4,20 @@
 #include <gbdk/platform.h>
 #include <gbdk/console.h>
 
+#include "basket.h"
 #include "blobbo.h"
 #include "init.h"
 
 struct blobbo_t blobbo;
+struct basket_t basket;
+
+struct blobbo_t *blobbo_ptr = &blobbo;
+struct basket_t *basket_ptr = &basket;
 
 void init() {
     init_console_specific_vals();
 
-    init_graphics(&blobbo);
+    init_graphics(blobbo_ptr, basket_ptr);
 }
 
 void main(void) {
@@ -67,6 +72,7 @@ void main(void) {
                     blobbo.state_timer --;
                 }
             }
+            // Return to half crouching state from full crouching state if we let go of button
             else if(blobbo.state == FULL_CROUCH_STATE) {
                 set_blobbo_half_crouching();
                 blobbo.state = HALF_CROUCH_STATE;
@@ -91,7 +97,9 @@ void main(void) {
                 set_blobbo_forward();
             }
         }
-        set_blobbo_location(blobbo.x, blobbo.y);
+
+        set_blobbo_sprite_location(blobbo.x, blobbo.y);
+        update_basket_location(blobbo_ptr, basket_ptr);
 
         wait_vbl_done();
     }
