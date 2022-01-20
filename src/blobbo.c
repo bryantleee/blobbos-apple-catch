@@ -1,4 +1,5 @@
 #include <gbdk/platform.h>
+#include <stdbool.h>
 
 #include "../res/blobbo_sprite.h"
 #include "blobbo.h"

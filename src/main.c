@@ -4,15 +4,21 @@
 #include <gbdk/platform.h>
 #include <gbdk/console.h>
 
-#include "basket.h"
 #include "blobbo.h"
+#include "basket.h"
+#include "arrow.h"
+#include "apple.h"
 #include "init.h"
 
 struct blobbo_t blobbo;
 struct basket_t basket;
+struct arrow_t arrow;
+struct apple_t apple;
 
 struct blobbo_t *blobbo_ptr = &blobbo;
 struct basket_t *basket_ptr = &basket;
+struct arrow_t *arrow_ptr = &arrow;
+struct apple_t *apple_ptr = &apple;
 
 void init() {
     init_console_specific_vals();
@@ -30,7 +36,8 @@ void main(void) {
         uint8_t j_input = joypad();
 
         if(j_input & J_B) {
-            printf("%u, %u\n", (unsigned int)blobbo.state, (unsigned int)blobbo.state_timer);
+            spawn_arrow(arrow_ptr);
+            printf("%u, %u\n", (unsigned int)blobbo.state, (unsigned int)arrow.is_moving_right);
         }
 
         // Code to handle Blobbo's state changing

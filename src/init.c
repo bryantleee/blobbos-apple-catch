@@ -5,8 +5,8 @@
 
 #include "blobbo.h"
 #include "basket.h"
-#include "apple.h"
 #include "arrow.h"
+#include "apple.h"
 
 /**
     Blobbo is made of four 8x8 sprites mapped as follows:
@@ -29,8 +29,6 @@ void init_graphics(struct blobbo_t *blobbo, struct basket_t *basket) {
     init_basket(blobbo, basket);
     init_apple();
     init_arrow();
-
-    // init_arrow(blobbo, basket);
 
     SHOW_BKG;
     SHOW_SPRITES;
