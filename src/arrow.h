@@ -8,6 +8,8 @@
 
 #define ARROW_DEFAULT_Y 110
 #define ARROW_SPEED 2
+#define SPRITE_MIRROR_RIGHT 32
+#define SPRITE_MIRROR_LEFT 0
 
 struct arrow_t {
     uint16_t x, y;

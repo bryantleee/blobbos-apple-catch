@@ -19,15 +19,15 @@ void spawn_arrow(struct arrow_t *arrow) {
 	if(arrow->is_moving_right) {
 		set_sprite_tile(ARROW_SPRITE_L, 28);
 		set_sprite_tile(ARROW_SPRITE_R, 27);
-		set_sprite_prop(ARROW_SPRITE_L, 32);
-		set_sprite_prop(ARROW_SPRITE_R, 32);
+		set_sprite_prop(ARROW_SPRITE_L, SPRITE_MIRROR_RIGHT);
+		set_sprite_prop(ARROW_SPRITE_R, SPRITE_MIRROR_RIGHT);
 		arrow->x = LEFT_WALL + 1;
 	}
 	else {
 		set_sprite_tile(ARROW_SPRITE_L, 27);
 		set_sprite_tile(ARROW_SPRITE_R, 28);
-		set_sprite_prop(ARROW_SPRITE_L, 0);
-		set_sprite_prop(ARROW_SPRITE_R, 0);		
+		set_sprite_prop(ARROW_SPRITE_L, SPRITE_MIRROR_LEFT);
+		set_sprite_prop(ARROW_SPRITE_R, SPRITE_MIRROR_LEFT);		
 		arrow->x = RIGHT_WALL - 1;
 
 	}	

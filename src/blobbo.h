@@ -12,6 +12,8 @@
 #define BLOBBO_SPRITE_BL 2
 #define BLOBBO_SPRITE_BR 3
 
+#define BLOBBO_DEFAULT_Y 121
+
 extern const uint8_t BLOBBO_STAND_SPEED;
 extern const uint8_t BLOBBO_CROUCH_SPEED;
 
