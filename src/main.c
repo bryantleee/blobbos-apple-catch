@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <rand.h>
 
 #include <gbdk/platform.h>
 #include <gbdk/console.h>
@@ -24,6 +23,8 @@ void init() {
     init_console_specific_vals();
 
     init_graphics(blobbo_ptr, basket_ptr);
+
+    init_random();
 }
 
 void main(void) {
@@ -32,12 +33,14 @@ void main(void) {
     uint8_t current_speed = BLOBBO_STAND_SPEED;
 
     // game loop
-    while(TRUE) { 
+    while(TRUE) {
         uint8_t j_input = joypad();
 
         if(j_input & J_B) {
-            spawn_arrow(arrow_ptr);
-            printf("%u, %u\n", (unsigned int)blobbo.state, (unsigned int)arrow.is_moving_right);
+            if(!(arrow.is_active)) {
+                spawn_arrow(arrow_ptr);
+            }
+            printf("%u, %u\n", (unsigned int)arrow.is_active, (unsigned int)arrow.is_moving_right);
         }
 
         // Code to handle Blobbo's state changing
@@ -86,7 +89,6 @@ void main(void) {
                 blobbo.state_timer = 2;
             }
         }
-
         if(j_input & J_RIGHT && blobbo.x < RIGHT_WALL) {
             blobbo.x += current_speed;
             if(blobbo.state == STANDING_STATE) {
@@ -107,6 +109,7 @@ void main(void) {
 
         set_blobbo_sprite_location(blobbo.x, blobbo.y);
         update_basket_location(blobbo_ptr, basket_ptr);
+        update_arrow_location(arrow_ptr);
 
         wait_vbl_done();
     }

@@ -2,6 +2,7 @@
 
 #include <gbdk/platform.h>
 #include <gbdk/console.h>
+#include <rand.h>
 
 #include "blobbo.h"
 #include "basket.h"
@@ -49,4 +50,10 @@ void init_console_specific_vals() {
     #endif
 
     // printf("%u, %u\n", (unsigned int)DEVICE_SCREEN_PX_WIDTH, (unsigned int)LEFT_WALL);
+}
+
+void init_random() {
+    uint16_t seed = DIV_REG;
+    seed |= (uint16_t)DIV_REG << 8;    
+    initrand(seed);
 }

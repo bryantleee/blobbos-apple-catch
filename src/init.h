@@ -8,4 +8,6 @@ void init_graphics(struct blobbo_t *blobbo, struct basket_t *basket);
 
 void init_console_specific_vals();
 
+void init_random();
+
 #endif

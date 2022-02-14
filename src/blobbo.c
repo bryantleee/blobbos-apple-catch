@@ -7,16 +7,10 @@
 const uint8_t BLOBBO_STAND_SPEED = 2;
 const uint8_t BLOBBO_CROUCH_SPEED = 1;
 
-/**
-    Blobbo is made of four 8x8 sprites mapped as follows:
-        sprite 0: top left quarter of body (tl)
-        sprite 1: top right quarter of body (tr)
-        sprite 2: bottom left quarter of body (bl)
-        sprite 3: bottom right quarter of body (br)
-**/
+
 void set_blobbo_sprite_location(uint16_t x, uint16_t y) {
-    uint8_t x1 = x + 8;
-    uint8_t y1 = y + 8;
+    uint16_t x1 = x + 8;
+    uint16_t y1 = y + 8;
 
     move_sprite(BLOBBO_SPRITE_TL, x, y);
 	move_sprite(BLOBBO_SPRITE_TR, x1, y);
