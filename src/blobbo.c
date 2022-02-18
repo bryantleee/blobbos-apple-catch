@@ -60,7 +60,7 @@ void init_blobbo(struct blobbo_t *blobbo) {
 	// Start facing forward
 	set_blobbo_forward();
 
-	//start Blobbo at the center x coordinate of the screen
+	// Start Blobbo at the center x coordinate of the screen
 	blobbo->x = (DEVICE_SCREEN_PX_WIDTH + DEVICE_SPRITE_PX_OFFSET_X) / 2;
     blobbo->y = BLOBBO_DEFAULT_Y; // (DEVICE_SCREEN_PX_HEIGHT + DEVICE_SPRITE_PX_OFFSET_Y) / 2;
 	blobbo->state = STANDING_STATE;

@@ -3,6 +3,7 @@
 
 extern const uint16_t LEFT_WALL;
 extern const uint16_t RIGHT_WALL;
+extern const uint16_t BOTTOM_WALL;
 
 void init_graphics(struct blobbo_t *blobbo, struct basket_t *basket);
 

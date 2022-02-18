@@ -7,7 +7,7 @@
 #define ARROW_SPRITE_R 7
 
 #define ARROW_DEFAULT_Y 110
-#define ARROW_SPEED 2
+#define ARROW_SPEED 3
 #define SPRITE_MIRROR_RIGHT 32
 #define SPRITE_MIRROR_LEFT 0
 

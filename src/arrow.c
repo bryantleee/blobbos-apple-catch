@@ -31,7 +31,7 @@ void spawn_arrow(struct arrow_t *arrow) {
 		arrow->x = RIGHT_WALL - 1;
 
 	}	
-	set_arrow_sprite_location(arrow->x, arrow->y);
+	set_arrow_sprite_location(arrow->x, arrow->y); //TODO change name to tile_locations or something better
 }
 
 void update_arrow_location(struct arrow_t *arrow) {

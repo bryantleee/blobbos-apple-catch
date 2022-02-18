@@ -40,7 +40,13 @@ void main(void) {
             if(!(arrow.is_active)) {
                 spawn_arrow(arrow_ptr);
             }
-            printf("%u, %u\n", (unsigned int)arrow.is_active, (unsigned int)arrow.is_moving_right);
+            printf("%u, %u\n", (unsigned int)DEVICE_SCREEN_PX_HEIGHT, (unsigned int)arrow.is_moving_right);
+        }
+        if(j_input & J_START) {
+            if(!(apple.is_active)) {
+                spawn_apple(apple_ptr);
+            }
+            printf("%u, %u\n", (unsigned int)DEVICE_SCREEN_PX_HEIGHT, (unsigned int)apple.is_active);
         }
 
         // Code to handle Blobbo's state changing
@@ -110,6 +116,7 @@ void main(void) {
         set_blobbo_sprite_location(blobbo.x, blobbo.y);
         update_basket_location(blobbo_ptr, basket_ptr);
         update_arrow_location(arrow_ptr);
+        update_apple_location(apple_ptr);
 
         wait_vbl_done();
     }
