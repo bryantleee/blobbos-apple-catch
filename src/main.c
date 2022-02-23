@@ -115,7 +115,7 @@ void main(void) {
 
         set_blobbo_sprite_location(blobbo.x, blobbo.y);
         update_basket_location(blobbo_ptr, basket_ptr);
-        update_arrow_location(arrow_ptr);
+        update_arrow_location(arrow_ptr, basket_ptr);
         update_apple_location(apple_ptr);
 
         wait_vbl_done();

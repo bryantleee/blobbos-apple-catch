@@ -2,6 +2,7 @@
 #define ARROW_H_
 
 #include <stdbool.h>
+#include "basket.h"
 
 #define ARROW_SPRITE_L 6
 #define ARROW_SPRITE_R 7
@@ -24,7 +25,7 @@ void spawn_arrow(struct arrow_t *arrow);
 
 void set_arrow_sprite_location(uint16_t x, uint16_t y);
 
-void update_arrow_location(struct arrow_t *arrow);
+void update_arrow_location(struct arrow_t *arrow, struct basket_t *basket_t);
 
 void hide_arrow();
 
