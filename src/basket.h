@@ -6,6 +6,9 @@
 #define BASKET_SPRITE_L 4
 #define BASKET_SPRITE_R 5
 
+#define BASKET_WIDTH 16
+#define BASKET_HEIGHT 8
+
 struct basket_t {
     uint16_t x, y;
 };

@@ -13,7 +13,7 @@ void init_arrow() {
 }
 
 void spawn_arrow(struct arrow_t *arrow) {
-	arrow->is_moving_right = rand() & 2;
+	arrow->is_moving_right = get_random_number(0, 1);
 	arrow->y = ARROW_DEFAULT_Y;
 	arrow->is_active = TRUE;
 
@@ -38,20 +38,11 @@ void spawn_arrow(struct arrow_t *arrow) {
 void update_arrow_location(struct arrow_t *arrow, struct basket_t *basket) {
 	if(arrow->is_active) {
 
-		// adjust arrow collision check depending on the direction arrow is moving due to mirroing 
-		uint16_t arrow_collision_x;
-		if(arrow->is_moving_right) {
-			arrow->x += ARROW_SPEED;
-			arrow_collision_x = arrow->x;
-		}
-		else {
-			arrow->x -= ARROW_SPEED;
-			arrow_collision_x = arrow->x - 8;
-		}
+		arrow->x = arrow->is_moving_right ? arrow->x + ARROW_SPEED : arrow->x - ARROW_SPEED;
 		
-		if((arrow->is_moving_right && arrow_collision_x >= RIGHT_WALL) ||
-			(!(arrow->is_moving_right) && arrow_collision_x <= LEFT_WALL)
-			|| is_colliding(arrow_collision_x, arrow->y, 16, 8, basket->x, basket->y, 8, 16)) {
+		if((arrow->is_moving_right && arrow->x >= RIGHT_WALL) ||
+			(!(arrow->is_moving_right) && arrow->x <= LEFT_WALL)
+			|| is_colliding(arrow->x, arrow->y, ARROW_WIDTH, ARROW_HEIGHT, basket->x, basket->y, BASKET_WIDTH, BASKET_HEIGHT)) {
 			arrow->is_active = FALSE;
 			hide_arrow();
 		}

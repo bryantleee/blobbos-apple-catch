@@ -6,6 +6,8 @@
 
 #define ARROW_SPRITE_L 6
 #define ARROW_SPRITE_R 7
+#define ARROW_WIDTH 16
+#define ARROW_HEIGHT 8
 
 #define ARROW_DEFAULT_Y 110
 #define ARROW_SPEED 3
