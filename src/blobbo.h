@@ -19,7 +19,7 @@ extern const uint8_t BLOBBO_CROUCH_SPEED;
 
 struct blobbo_t {
     uint16_t x, y;
-    uint8_t state, state_timer;
+    uint8_t state, state_timer, speed;
     bool is_moving_down;
 };
 

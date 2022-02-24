@@ -17,7 +17,7 @@ void spawn_arrow(struct arrow_t *arrow) {
 	arrow->y = ARROW_DEFAULT_Y;
 	arrow->is_active = TRUE;
 
-	if(arrow->is_moving_right) {
+	if (arrow->is_moving_right) {
 		set_sprite_tile(ARROW_SPRITE_L, 28);
 		set_sprite_tile(ARROW_SPRITE_R, 27);
 		set_sprite_prop(ARROW_SPRITE_L, SPRITE_MIRROR_RIGHT);
@@ -32,19 +32,22 @@ void spawn_arrow(struct arrow_t *arrow) {
 		arrow->x = RIGHT_WALL - 1;
 
 	}	
-	set_arrow_sprite_location(arrow->x, arrow->y); //TODO change name to tile_locations or something better
+	set_arrow_sprite_location(arrow->x, arrow->y); // TODO change name to tile_locations or something better
 }
 
 void update_arrow_location(struct arrow_t *arrow, struct basket_t *basket) {
-	if(arrow->is_active) {
+	if (arrow->is_active) {
 
 		arrow->x = arrow->is_moving_right ? arrow->x + ARROW_SPEED : arrow->x - ARROW_SPEED;
-		
-		if((arrow->is_moving_right && arrow->x >= RIGHT_WALL) ||
-			(!(arrow->is_moving_right) && arrow->x <= LEFT_WALL)
-			|| is_colliding(arrow->x, arrow->y, ARROW_WIDTH, ARROW_HEIGHT, basket->x, basket->y, BASKET_WIDTH, BASKET_HEIGHT)) {
+	
+		bool arrow_collided = is_colliding(arrow->x, arrow->y, ARROW_WIDTH, ARROW_HEIGHT, basket->x, basket->y, BASKET_WIDTH, BASKET_HEIGHT);
+		if ((arrow->is_moving_right && arrow->x >= RIGHT_WALL) || (!(arrow->is_moving_right) && arrow->x <= LEFT_WALL) || arrow_collided) {
 			arrow->is_active = FALSE;
 			hide_arrow();
+
+			if (arrow_collided) {
+				init_game_over();
+			}
 		}
 		else {
 			set_arrow_sprite_location(arrow->x, arrow->y);

@@ -5,10 +5,21 @@ extern const uint16_t LEFT_WALL;
 extern const uint16_t RIGHT_WALL;
 extern const uint16_t BOTTOM_WALL;
 
+#define INTRO_CREDITS_STATE 0
+#define TITLE_STATE 1
+#define GAMEPLAY_STATE 2
+#define GAME_OVER_STATE 3
+
 void init_graphics(struct blobbo_t *blobbo, struct basket_t *basket);
 
 void init_console_specific_vals();
 
 void init_random();
+
+void init_new_game();
+
+void init_game_over();
+
+void init_sound();
 
 #endif

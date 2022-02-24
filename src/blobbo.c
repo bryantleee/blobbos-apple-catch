@@ -65,6 +65,7 @@ void init_blobbo(struct blobbo_t *blobbo) {
     blobbo->y = BLOBBO_DEFAULT_Y; // (DEVICE_SCREEN_PX_HEIGHT + DEVICE_SPRITE_PX_OFFSET_Y) / 2;
 	blobbo->state = STANDING_STATE;
 	blobbo->state_timer = 0;
+	blobbo->speed = BLOBBO_STAND_SPEED;
 	bool is_moving_down = FALSE;
 	set_blobbo_sprite_location(blobbo->x, blobbo->y);
 }

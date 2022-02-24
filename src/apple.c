@@ -1,4 +1,3 @@
-
 #include <gbdk/platform.h>
 #include <stdbool.h>
 
@@ -7,6 +6,7 @@
 #include "basket.h"
 #include "init.h"
 #include "utils.h"
+#include "score_display.h"
 
 void init_apple() {
     set_sprite_data(21, 4, apple_sprite);
@@ -36,13 +36,29 @@ void set_apple_sprite_location(uint16_t x, uint16_t y) {
 }
 
 void update_apple_location(struct apple_t *apple, struct basket_t *basket) {
-	if(apple->is_active) {
+	if (apple->is_active) {
 		apple->y += APPLE_SPEED;
-		if(apple->y > BOTTOM_WALL
-			|| is_colliding(apple->x, apple->y, APPLE_WIDTH, APPLE_HEIGHT, basket->x, basket->y, BASKET_WIDTH, BASKET_HEIGHT)) {
+		bool apple_caught = is_colliding(apple->x, apple->y, APPLE_WIDTH, APPLE_HEIGHT, basket->x, basket->y, BASKET_WIDTH, BASKET_HEIGHT);
+
+		if (apple->y > BOTTOM_WALL || apple_caught) {
 			apple->y -= 1;
 			apple->is_active = false;
+
+			if (apple_caught) {
+				increment_score_display();	
+
+				NR10_REG = 0x15;
+				NR11_REG = 0x9B;
+				NR12_REG = 0x73;
+				NR13_REG = 0x01;
+				NR14_REG = 0x85;			
+			}
+			else {
+				init_game_over();
+			}
+
 			hide_apple();
+			
 		} 
 		else {
 			set_apple_sprite_location(apple->x, apple->y);

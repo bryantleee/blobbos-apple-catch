@@ -1,6 +1,6 @@
 /*
 
- BLOBBO_SPRITE.H
+ SCORE_DISPLAY_SPRITE.H
 
  Include File.
 
@@ -9,8 +9,8 @@
   Format               : Gameboy 4 color.
   Compression          : None.
   Counter              : None.
-  Tile size            : 16 x 16
-  Tiles                : 0 to 4
+  Tile size            : 8 x 8
+  Tiles                : 0 to 9
 
   Palette colors       : None.
   SGB Palette          : None.
@@ -24,8 +24,10 @@
 
 
 /* Bank of tiles. */
-#define blobboBank 0
+#define score_displayBank 0
 /* Start of tile array. */
-extern const const unsigned char blobbo_sprite[];
+extern unsigned char score_display_sprite[];
 
-/* End of BLOBBO_SPRITE.H */
+extern unsigned char score_display_bkg[];
+
+/* End of SCORE_DISPLAY_SPRITE.H */
