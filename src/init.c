@@ -23,7 +23,7 @@
 // TODO: fix right wall for SMS
 
 const uint16_t LEFT_WALL = DEVICE_SPRITE_PX_OFFSET_X;
-const uint16_t RIGHT_WALL = DEVICE_SCREEN_PX_WIDTH + DEVICE_SPRITE_PX_OFFSET_X - 8;
+const uint16_t RIGHT_WALL = DEVICE_SCREEN_PX_WIDTH + DEVICE_SPRITE_PX_OFFSET_X - 16;
 const uint16_t BOTTOM_WALL = DEVICE_SCREEN_PX_HEIGHT;
 
 void init_graphics(struct blobbo_t *blobbo, struct basket_t *basket) {
