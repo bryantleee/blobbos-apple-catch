@@ -4,9 +4,10 @@
 #include "../res/score_display_tiles.h"
 #include "init.h"
 #include "utils.h"
+#include "score_display.h"
 
 void init_score_display() {
-	set_bkg_data(86, 18, score_display_tileset);
+	set_bkg_data(86, SCORE_DISPLAY_TILESET_TILES_COUNT, score_display_tileset);
 }
 
 void reset_score_display() {
@@ -14,7 +15,7 @@ void reset_score_display() {
 		score_display_tilemap[i] = 0x56;
 	}
 
-	set_bkg_tiles(15, 17, 5, 1, score_display_tilemap); 
+	set_bkg_tiles(SCORE_DISPLAY_X, SCORE_DISPLAY_Y, SCORE_DISPLAY_TILEMAP_WIDTH, SCORE_DISPLAY_TILEMAP_HEIGHT, score_display_tilemap); 
 }
 
 void increment_score_display() {
