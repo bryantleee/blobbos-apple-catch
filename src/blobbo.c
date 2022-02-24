@@ -3,6 +3,7 @@
 
 #include "../res/blobbo_sprite.h"
 #include "blobbo.h"
+#include "init.h"
 
 const uint8_t BLOBBO_STAND_SPEED = 2;
 const uint8_t BLOBBO_CROUCH_SPEED = 1;
@@ -67,5 +68,73 @@ void init_blobbo(struct blobbo_t *blobbo) {
 	blobbo->state_timer = 0;
 	blobbo->speed = BLOBBO_STAND_SPEED;
 	bool is_moving_down = FALSE;
+	set_blobbo_sprite_location(blobbo->x, blobbo->y);
+}
+
+void update_blobbo_location(struct blobbo_t *blobbo, uint8_t j_input) {
+	// Code to handle Blobbo's state changing
+	if (j_input & J_DOWN || j_input & J_A) {
+		if (blobbo->state == STANDING_STATE) {
+			set_blobbo_half_crouching();
+			blobbo->state = HALF_CROUCH_STATE;
+			blobbo->state_timer = 2;
+			blobbo->is_moving_down = TRUE;
+		}
+		else if (blobbo->state == HALF_CROUCH_STATE) {
+			// If we have spent enough time in the half crouch state 
+			// transition to the full crouch state
+			if (blobbo->state_timer == 0) {
+				set_blobbo_crouching();
+				blobbo->state = FULL_CROUCH_STATE;
+				blobbo->state_timer = 0;
+				blobbo->is_moving_down = FALSE;
+				blobbo->speed = BLOBBO_CROUCH_SPEED;
+			}
+			// If we haven't spent enough time in the half crouch state
+			// continuing decrementing the timer
+			else {
+				blobbo->state_timer --;
+			}
+		}
+	}
+	else {
+		if (blobbo->state == HALF_CROUCH_STATE) {
+			// Return the standing state if blobbo is transitioning animation downwards
+			// or if Blobbo has spent enough time in half crouch state transitioning upwards
+			if (blobbo->is_moving_down || blobbo->state_timer == 0) {
+				set_blobbo_forward();
+				blobbo->state = STANDING_STATE;
+				blobbo->state_timer = 0;
+				blobbo->speed = BLOBBO_STAND_SPEED;
+			}
+			else {  
+				blobbo->state_timer --;
+			}
+		}
+		// Return to half crouching state from full crouching state if we let go of button
+		else if (blobbo->state == FULL_CROUCH_STATE) {
+			set_blobbo_half_crouching();
+			blobbo->state = HALF_CROUCH_STATE;
+			blobbo->state_timer = 2;
+		}
+	}
+	if (j_input & J_RIGHT && blobbo->x < RIGHT_WALL) {
+		blobbo->x += blobbo->speed;
+		if (blobbo->state == STANDING_STATE) {
+			set_blobbo_right();
+		}
+	}
+	else if (j_input & J_LEFT && blobbo->x > LEFT_WALL) {
+		blobbo->x -= blobbo->speed;
+		if (blobbo->state == STANDING_STATE) {
+			set_blobbo_left();
+		}
+	}
+	else {
+		if (blobbo->state == STANDING_STATE) {
+			set_blobbo_forward();
+		}
+	}
+
 	set_blobbo_sprite_location(blobbo->x, blobbo->y);
 }

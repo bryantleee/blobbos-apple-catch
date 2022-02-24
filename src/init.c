@@ -30,7 +30,7 @@ void init_graphics(struct blobbo_t *blobbo, struct basket_t *basket) {
 	SPRITES_8x8;
 
 	init_blobbo(blobbo);
-    init_basket(blobbo, basket);
+    init_basket(basket, blobbo);
     init_apple();
     init_arrow();
 

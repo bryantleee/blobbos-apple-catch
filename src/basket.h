@@ -15,8 +15,8 @@ struct basket_t {
 
 void set_basket_sprite_location(uint16_t x, uint16_t y);
 
-void update_basket_location(struct blobbo_t *blobbo, struct basket_t *basket);
+void update_basket_location(struct basket_t *basket, struct blobbo_t *blobbo);
 
-void init_basket(struct blobbo_t *blobbo, struct basket_t *basket);
+void init_basket(struct basket_t *basket, struct blobbo_t *blobbo);
 
 #endif
