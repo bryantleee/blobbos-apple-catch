@@ -10,6 +10,7 @@
 #include "apple.h"
 #include "score_display.h"
 #include "score_display.h"
+#include "intro.h"
 
 /**
     Blobbo is made of four 8x8 sprites mapped as follows:
@@ -34,7 +35,10 @@ void init_graphics(struct blobbo_t *blobbo, struct basket_t *basket) {
     init_apple();
     init_arrow();
 
+    // init_title_screen();
     init_score_display();
+
+    // display_title_screen();
 
     SHOW_BKG;
     SHOW_SPRITES;

@@ -1,6 +1,6 @@
 /*
 
- SCORE_DISPLAY_SPRITE.H
+ score_display.H
 
  Include File.
 
@@ -26,8 +26,8 @@
 /* Bank of tiles. */
 #define score_displayBank 0
 /* Start of tile array. */
-extern unsigned char score_display_sprite[];
+extern unsigned char score_display_tileset[];
 
-extern unsigned char score_display_bkg[];
+extern unsigned char score_display_tilemap[];
 
-/* End of SCORE_DISPLAY_SPRITE.H */
+/* End of score_display.H */
