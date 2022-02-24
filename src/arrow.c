@@ -8,8 +8,9 @@
 #include "init.h"
 #include "utils.h"
 
-void init_arrow() {
+void init_arrow(struct arrow_t *arrow) {
 	set_sprite_data(25, 4, arrow_sprite);
+	set_arrow_spawn_time(arrow);
 }
 
 void spawn_arrow(struct arrow_t *arrow) {
@@ -44,13 +45,20 @@ void update_arrow_location(struct arrow_t *arrow, struct basket_t *basket) {
 		if ((arrow->is_moving_right && arrow->x >= RIGHT_WALL) || (!(arrow->is_moving_right) && arrow->x <= LEFT_WALL) || arrow_collided) {
 			arrow->is_active = FALSE;
 			hide_arrow();
-
 			if (arrow_collided) {
 				init_game_over();
+			}
+			else {
+				set_arrow_spawn_time(arrow);
 			}
 		}
 		else {
 			set_arrow_sprite_location(arrow->x, arrow->y);
+		}
+	}
+	else {
+		if (-- arrow->spawn_timer == 0) {
+			spawn_arrow(arrow);
 		}
 	}
 }
@@ -65,3 +73,7 @@ void hide_arrow() {
 	set_sprite_tile(ARROW_SPRITE_L, 18);
 	set_sprite_tile(ARROW_SPRITE_R, 18);
 } 
+
+void set_arrow_spawn_time(struct arrow_t *arrow) {
+	arrow->spawn_timer = get_random_number(MIN_ARROW_SPAWN_TIME, MAX_ARROW_SPAWN_TIME);
+}

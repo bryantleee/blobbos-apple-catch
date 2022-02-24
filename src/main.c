@@ -14,23 +14,26 @@ struct basket_t basket;
 struct arrow_t arrow;
 struct apple_t apple;
 
-uint8_t game_state;
-
 struct blobbo_t *blobbo_ptr = &blobbo;
 struct basket_t *basket_ptr = &basket;
 struct arrow_t *arrow_ptr = &arrow;
 struct apple_t *apple_ptr = &apple;
+
+uint8_t game_state;
 
 void init() {
     init_sound();
 
     init_console_specific_vals();
 
-    init_graphics(blobbo_ptr, basket_ptr);
+    init_graphics(blobbo_ptr, basket_ptr, arrow_ptr);
 
     init_random();
 
     game_state = GAMEPLAY_STATE;
+
+
+    score = 0; 
     init_new_game();
 }
 

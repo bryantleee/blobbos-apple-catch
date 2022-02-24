@@ -10,7 +10,7 @@ extern const uint16_t BOTTOM_WALL;
 #define GAMEPLAY_STATE 2
 #define GAME_OVER_STATE 3
 
-void init_graphics(struct blobbo_t *blobbo, struct basket_t *basket);
+void init_graphics(struct blobbo_t *blobbo, struct basket_t *basket, struct arrow_t *arrow);
 
 void init_console_specific_vals();
 
