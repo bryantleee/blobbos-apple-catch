@@ -1,5 +1,4 @@
 #include <gbdk/platform.h>
-#include <stdbool.h>
 
 #include "../res/apple_sprite.h"
 #include "apple.h"
@@ -13,9 +12,9 @@ void init_apple() {
 }
 
 void spawn_apple(struct apple_t * apple) {
+	apple->drop_timer = APPLE_DANGLE_TIME;
 	apple->x = get_random_number(LEFT_WALL, RIGHT_WALL);
-	apple->y = get_random_number(0, 38);
-	apple->is_active = TRUE;
+	apple->y = get_random_number(APPLE_MIN_SPAWN_Y, APPLE_MAX_SPAWN_Y);
 
     set_sprite_tile(APPLE_TL, 21);
 	set_sprite_tile(APPLE_BL, 22);
@@ -36,34 +35,38 @@ void set_apple_sprite_location(uint16_t x, uint16_t y) {
 }
 
 void update_apple_location(struct apple_t *apple, struct basket_t *basket) {
-	if (apple->is_active) {
+	if (apple->drop_timer == 0) {
 		apple->y += APPLE_SPEED;
 		bool apple_caught = is_colliding(apple->x, apple->y, APPLE_WIDTH, APPLE_HEIGHT, basket->x, basket->y, BASKET_WIDTH, BASKET_HEIGHT);
 
 		if (apple->y > BOTTOM_WALL || apple_caught) {
-			apple->y -= 1;
-			apple->is_active = false;
+			apple->y --;
 
 			if (apple_caught) {
-				increment_score_display();	
-
-				NR10_REG = 0x15;
-				NR11_REG = 0x9B;
-				NR12_REG = 0x73;
-				NR13_REG = 0x01;
-				NR14_REG = 0x85;			
+				play_apple_caught_sound();
+				increment_score_display();
+				hide_apple();
+				spawn_apple(apple);
 			}
 			else {
 				init_game_over();
-			}
-
-			hide_apple();
-			
+			}	
 		} 
 		else {
 			set_apple_sprite_location(apple->x, apple->y);
 		}
 	}
+	else {
+		apple->drop_timer --;
+	}
+}
+
+void play_apple_caught_sound() {
+	NR10_REG = 0x15;
+	NR11_REG = 0x9B;
+	NR12_REG = 0x73;
+	NR13_REG = 0x01;
+	NR14_REG = 0x85;
 }
 
 void hide_apple() {

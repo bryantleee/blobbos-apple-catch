@@ -20,6 +20,7 @@ struct arrow_t *arrow_ptr = &arrow;
 struct apple_t *apple_ptr = &apple;
 
 uint8_t game_state;
+uint16_t score;
 
 void init() {
     init_sound();
@@ -39,10 +40,15 @@ void init() {
 
 void main(void) {
     init();
+    spawn_apple(apple_ptr);
 
     // game loop
     while(TRUE) {
         uint8_t j_input = joypad();
+
+        if(j_input & J_START) {
+            printf("%u, %u\n", (unsigned int)DEVICE_SCREEN_PX_HEIGHT, (unsigned int)apple.drop_timer);
+        }
 
         if (game_state == GAMEPLAY_STATE) {
         
@@ -50,13 +56,6 @@ void main(void) {
                 if (!(arrow.is_active)) {
                     spawn_arrow(arrow_ptr);
                 }
-                // printf("%u, %u\n", (unsigned int)DEVICE_SCREEN_PX_HEIGHT, (unsigned int)arrow.is_moving_right);
-            }
-            if (j_input & J_START) {
-                if (!(apple.is_active)) {
-                    spawn_apple(apple_ptr);
-                }
-                // printf("%u, %u\n", (unsigned int)DEVICE_SCREEN_PX_HEIGHT, (unsigned int)apple.is_active);
             }
 
             update_blobbo_location(blobbo_ptr, j_input);
