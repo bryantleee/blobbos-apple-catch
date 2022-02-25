@@ -32,8 +32,7 @@ void init() {
     init_random();
 
     game_state = GAMEPLAY_STATE;
-
-
+    
     score = 0; 
     init_new_game();
 }

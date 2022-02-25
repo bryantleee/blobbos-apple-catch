@@ -20,15 +20,12 @@
         sprite 3: bottom right quarter of body (br)
 **/
 
-// TODO: fix right wall for SMS
-
 const uint16_t LEFT_WALL = DEVICE_SPRITE_PX_OFFSET_X;
 const uint16_t RIGHT_WALL = DEVICE_SCREEN_PX_WIDTH + DEVICE_SPRITE_PX_OFFSET_X - 16;
 const uint16_t BOTTOM_WALL = DEVICE_SCREEN_PX_HEIGHT;
 
 void init_graphics(struct blobbo_t *blobbo, struct basket_t *basket, struct arrow_t *arrow) {
-    // Set sprites to 8x8 mode
-	SPRITES_8x8;
+	SPRITES_8x8; // Set sprites to 8x8 mode
 
 	init_blobbo(blobbo);
     init_basket(basket, blobbo);
