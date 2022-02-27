@@ -3,7 +3,9 @@
 
 #include "../res/title_screen_tiles.h"
 
-void display_credits() {
+void init_intro_credits() {}
+
+void display_intro_credits() {
 	printf("                    ");
 	printf("                    ");
 	printf("                    ");
@@ -19,7 +21,7 @@ void display_credits() {
 	printf("                    ");
 	printf("                    ");
 	printf("                    ");
-	printf("Copyright 2019-2022 ");
+	printf("Copyright  2019-2022");
 	printf("       v2.0.0       ");
 
 	delay(3000);
@@ -31,4 +33,5 @@ void init_title_screen() {
 
 void display_title_screen() {
 	set_bkg_tiles(0, 0, TITLE_SCREEN_TILEMAP_WIDTH, TITLE_SCREEN_TILEMAP_HEIGHT, title_screen_tilemap);
+	while(!(joypad() & J_START)) {}
 }

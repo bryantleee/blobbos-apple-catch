@@ -27,6 +27,6 @@ void hide_apple();
 
 void spawn_apple(struct apple_t *apple);
 
-void update_apple_location(struct apple_t *apple, struct basket_t *basket);
+void update_apple_location(struct apple_t *apple, struct basket_t *basket, uint16_t *score);
 
 void play_apple_caught_sound();

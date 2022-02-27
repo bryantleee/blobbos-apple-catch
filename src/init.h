@@ -12,8 +12,6 @@ extern const uint16_t BOTTOM_WALL;
 
 void init_graphics(struct blobbo_t *blobbo, struct basket_t *basket, struct arrow_t *arrow);
 
-void init_console_specific_vals();
-
 void init_random();
 
 void init_new_game();

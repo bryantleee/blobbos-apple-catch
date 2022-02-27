@@ -11,6 +11,7 @@
 #include "score_display.h"
 #include "score_display.h"
 #include "intro.h"
+#include "../res/nature_background_tiles.h"
 
 /**
     Blobbo is made of four 8x8 sprites mapped as follows:
@@ -32,11 +33,6 @@ void init_graphics(struct blobbo_t *blobbo, struct basket_t *basket, struct arro
     init_apple();
     init_arrow(arrow);
 
-    // init_title_screen();
-    init_score_display();
-
-    // display_title_screen();
-
     SHOW_BKG;
     SHOW_SPRITES;
 }
@@ -47,21 +43,6 @@ void init_sound() {
 	NR50_REG = 0x77; //increase the volume to its max
 }
 
-void init_console_specific_vals() {
-    // #if defined(__TARGET_gb)
-    // puts("game boy");
-
-    // #elif defined(__TARGET_gg)
-    // puts("game gear");
-
-    // #elif defined(__TARGET_sms)
-    // puts("master system");
-
-    // #else
-    // puts("unrecognized system");
-    // #endif
-}
-
 void init_random() {
     uint16_t seed = DIV_REG;
     seed |= (uint16_t)DIV_REG << 8;    
@@ -69,7 +50,14 @@ void init_random() {
 }
 
 void init_new_game() {
+    DISPLAY_OFF;
+    
+    set_bkg_data(0, NATURE_BACKGROUND_TILES_COUNT, nature_background_tileset);
+    set_bkg_tiles(0, 0, NATURE_BACKGROUND_TILES_WIDTH, NATURE_BACKGROUND_TILES_HEIGHT, nature_background_tilemap); 
+    init_score_display();
     reset_score_display();
+
+    DISPLAY_ON;
 }
 
 void init_game_over() {
@@ -78,8 +66,6 @@ void init_game_over() {
 	NR12_REG = 0x73;
 	NR13_REG = 0x01;
 	NR14_REG = 0x90;
-
-    reset_score_display();
 
     // HIDE_SPRIES;
 }
