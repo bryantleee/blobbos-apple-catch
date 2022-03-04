@@ -5,7 +5,6 @@
 #include "../res/arrow_sprite.h"
 #include "arrow.h"
 #include "basket.h"
-#include "init.h"
 #include "utils.h"
 
 void init_arrow(struct arrow_t *arrow) {

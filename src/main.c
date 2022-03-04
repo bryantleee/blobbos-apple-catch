@@ -7,7 +7,7 @@
 #include "basket.h"
 #include "arrow.h"
 #include "apple.h"
-#include "init.h"
+#include "utils.h"
 #include "intro.h"
 
 struct blobbo_t blobbo;
@@ -42,13 +42,13 @@ void init_gameplay_loop() {
 // }
 
 void main(void) {
-    // init_intro_credits();
-    // display_intro_credits();
+    init_intro_credits();
+    display_intro_credits();
     
-    // DISPLAY_OFF;
-    // init_title_screen();
-    // DISPLAY_ON;
-    // display_title_screen();
+    DISPLAY_OFF;
+    init_title_screen();
+    DISPLAY_ON;
+    display_title_screen();
     
     DISPLAY_OFF;
     init_gameplay_loop();
@@ -61,13 +61,6 @@ void main(void) {
         uint8_t j_input = joypad();
 
         if (game_state == GAMEPLAY_STATE) {
-        
-            if (j_input & J_B) {
-                if (!(arrow.is_active)) {
-                    spawn_arrow(arrow_ptr);
-                }
-            }
-
             update_blobbo_location(blobbo_ptr, j_input);
             update_basket_location(basket_ptr, blobbo_ptr);
             update_arrow_location(arrow_ptr, basket_ptr);

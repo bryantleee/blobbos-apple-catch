@@ -3,7 +3,6 @@
 #include "../res/apple_sprite.h"
 #include "apple.h"
 #include "basket.h"
-#include "init.h"
 #include "utils.h"
 #include "score_display.h"
 

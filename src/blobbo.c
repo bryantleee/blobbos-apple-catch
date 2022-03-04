@@ -3,7 +3,7 @@
 
 #include "../res/blobbo_sprite.h"
 #include "blobbo.h"
-#include "init.h"
+#include "utils.h"
 
 const uint8_t BLOBBO_STAND_SPEED = 2;
 const uint8_t BLOBBO_CROUCH_SPEED = 1;

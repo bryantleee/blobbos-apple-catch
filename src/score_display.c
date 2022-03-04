@@ -2,7 +2,6 @@
 #include <stdbool.h>
 
 #include "../res/score_display_tiles.h"
-#include "init.h"
 #include "utils.h"
 #include "score_display.h"
 
