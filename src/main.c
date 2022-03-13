@@ -23,24 +23,6 @@ struct apple_t *apple_ptr = &apple;
 uint8_t game_state;
 uint16_t score;
 
-void init_gameplay_loop() {
-    
-    init_sound();
-
-    init_graphics(blobbo_ptr, basket_ptr, arrow_ptr);
-
-    init_random();
-    
-    init_new_game();
-
-    game_state = GAMEPLAY_STATE;    
-}
-
-// void set_new_game() {
-//     score = 0;
-//     set_bkg_data(86, SCORE_DISPLAY_TILESET_TILES_COUNT, score_display_tileset);
-// }
-
 void main(void) {
     init_intro_credits();
     display_intro_credits();
@@ -51,7 +33,7 @@ void main(void) {
     display_title_screen();
     
     DISPLAY_OFF;
-    init_gameplay_loop();
+    init_gameplay_state(blobbo_ptr, basket_ptr, arrow_ptr, &game_state);
     DISPLAY_ON;
     
     spawn_apple(apple_ptr);
@@ -59,7 +41,7 @@ void main(void) {
     // game loop
     while(TRUE) {
         uint8_t j_input = joypad();
-        
+
         if (game_state == GAMEPLAY_STATE) {
             update_blobbo_location(blobbo_ptr, j_input);
             update_basket_location(basket_ptr, blobbo_ptr);
@@ -68,8 +50,7 @@ void main(void) {
         }
         else if(game_state == GAME_OVER_STATE) {
             while(!(joypad() & J_START)) {}
-            init_gameplay_loop();
-            game_state = GAMEPLAY_STATE;
+            init_gameplay_state(blobbo_ptr, basket_ptr, arrow_ptr, &game_state);
         }
         wait_vbl_done();
     }
