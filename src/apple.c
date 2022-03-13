@@ -33,23 +33,23 @@ void set_apple_sprite_location(uint16_t x, uint16_t y) {
 	move_sprite(APPLE_BR, x1, y1);
 }
 
-void update_apple_location(struct apple_t *apple, struct basket_t *basket, uint16_t *score) {
+void update_apple_location(struct apple_t *apple, struct basket_t *basket, uint16_t *score, uint8_t *game_state) {
 	if (apple->drop_timer == 0) {
 		apple->y += APPLE_SPEED;
 		bool apple_caught = is_colliding(apple->x, apple->y, APPLE_WIDTH, APPLE_HEIGHT, basket->x, basket->y, BASKET_WIDTH, BASKET_HEIGHT);
 
 		if (apple->y > BOTTOM_WALL || apple_caught) {
 			apple->y --;
+			hide_apple();
 
 			if (apple_caught) {
 				play_apple_caught_sound();
-				score ++;
+				*score ++;
 				increment_score_display();
-				hide_apple();
 				spawn_apple(apple);
 			}
 			else {
-				init_game_over();
+				init_game_over(game_state);
 			}	
 		} 
 		else {

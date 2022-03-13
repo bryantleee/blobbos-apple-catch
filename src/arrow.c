@@ -35,7 +35,7 @@ void spawn_arrow(struct arrow_t *arrow) {
 	set_arrow_sprite_location(arrow->x, arrow->y); // TODO change name to tile_locations or something better
 }
 
-void update_arrow_location(struct arrow_t *arrow, struct basket_t *basket) {
+void update_arrow_location(struct arrow_t *arrow, struct basket_t *basket, uint16_t *score, uint8_t *game_state) {
 	if (arrow->is_active) {
 
 		arrow->x = arrow->is_moving_right ? arrow->x + ARROW_SPEED : arrow->x - ARROW_SPEED;
@@ -45,7 +45,7 @@ void update_arrow_location(struct arrow_t *arrow, struct basket_t *basket) {
 			arrow->is_active = FALSE;
 			hide_arrow();
 			if (arrow_collided) {
-				init_game_over();
+				init_game_over(game_state);
 			}
 			else {
 				set_arrow_spawn_time(arrow);
@@ -55,7 +55,7 @@ void update_arrow_location(struct arrow_t *arrow, struct basket_t *basket) {
 			set_arrow_sprite_location(arrow->x, arrow->y);
 		}
 	}
-	else {
+	else if (*score > MIN_SCORE_FOR_ARROW_TO_SPAWN){
 		if (-- arrow->spawn_timer == 0) {
 			spawn_arrow(arrow);
 		}

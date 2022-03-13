@@ -4,6 +4,7 @@
 #include <gbdk/console.h>
 #include <rand.h>
 
+#include "utils.h"
 #include "blobbo.h"
 #include "basket.h"
 #include "arrow.h"
@@ -60,17 +61,19 @@ void init_new_game() {
     DISPLAY_ON;
 }
 
-void init_game_over() {
+void init_game_over(uint8_t *game_state) {
     NR10_REG = 0x15;
 	NR11_REG = 0x9B;
 	NR12_REG = 0x73;
 	NR13_REG = 0x01;
 	NR14_REG = 0x90;
 
+    *game_state = GAME_OVER_STATE;
+
     HIDE_SPRITES;
 }
 
-bool is_colliding(uint8_t x1, uint8_t y1, uint8_t w1, uint8_t h1, uint8_t x2, uint8_t y2, uint8_t w2, uint8_t h2){
+bool is_colliding(uint8_t x1, uint8_t y1, uint8_t w1, uint8_t h1, uint8_t x2, uint8_t y2, uint8_t w2, uint8_t h2) {
     return (x1 < (x2 + w2)) && ((x1 + w1) > x2) && (y1 < (h2 + y2)) && ((y1 + h1) > y2);
 }
 

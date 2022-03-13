@@ -59,14 +59,18 @@ void main(void) {
     // game loop
     while(TRUE) {
         uint8_t j_input = joypad();
-
+        
         if (game_state == GAMEPLAY_STATE) {
             update_blobbo_location(blobbo_ptr, j_input);
             update_basket_location(basket_ptr, blobbo_ptr);
-            update_arrow_location(arrow_ptr, basket_ptr);
-            update_apple_location(apple_ptr, basket_ptr, &score);
-
-            wait_vbl_done();
+            update_arrow_location(arrow_ptr, basket_ptr, &score, &game_state);
+            update_apple_location(apple_ptr, basket_ptr, &score, &game_state);            
         }
-    }        
+        else if(game_state == GAME_OVER_STATE) {
+            while(!(joypad() & J_START)) {}
+            init_gameplay_loop();
+            game_state = GAMEPLAY_STATE;
+        }
+        wait_vbl_done();
+    }
 }
