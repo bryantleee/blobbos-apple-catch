@@ -45,7 +45,7 @@ void update_arrow_location(struct arrow_t *arrow, struct basket_t *basket, uint1
 			arrow->is_active = FALSE;
 			hide_arrow();
 			if (arrow_collided) {
-				init_game_over(game_state);
+				init_game_over_state(game_state);
 			}
 			else {
 				set_arrow_spawn_time(arrow);

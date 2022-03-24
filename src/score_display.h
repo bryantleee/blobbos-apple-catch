@@ -8,6 +8,7 @@ void init_score_display();
 
 void reset_score_display();
 
+// Better to only include an increment operation since modulo is so costly
 void increment_score_display();
 
 #endif

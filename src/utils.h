@@ -11,7 +11,7 @@ extern const uint16_t BOTTOM_WALL;
 
 #define GAMEPLAY_STATE 0 // This is 0 because an equality check on 0 is most efficient
 #define INTRO_CREDITS_STATE 0
-#define TITLE_STATE 1
+#define TITLE_SCREEN_STATE 1
 #define GAME_OVER_STATE 3
 
 void init_graphics(struct blobbo_t *blobbo, struct basket_t *basket, struct arrow_t *arrow);
@@ -20,7 +20,7 @@ void init_random();
 
 void init_new_game();
 
-void init_game_over(uint8_t *game_state);
+void init_game_over_state(uint8_t *game_state);
 
 void init_sound();
 

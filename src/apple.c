@@ -49,7 +49,7 @@ void update_apple_location(struct apple_t *apple, struct basket_t *basket, uint1
 				spawn_apple(apple);
 			}
 			else {
-				init_game_over(game_state);
+				init_game_over_state(game_state);
 			}	
 		} 
 		else {

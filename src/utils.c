@@ -61,13 +61,13 @@ void init_new_game() {
     DISPLAY_ON;
 }
 
-void init_game_over(uint8_t *game_state) {
+void init_game_over_state(uint8_t *game_state) {
     NR10_REG = 0x15;
 	NR11_REG = 0x9B;
 	NR12_REG = 0x73;
 	NR13_REG = 0x01;
 	NR14_REG = 0x90;
-
+    
     *game_state = GAME_OVER_STATE;
 
     HIDE_SPRITES;
