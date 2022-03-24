@@ -88,5 +88,6 @@ void init_gameplay_state(struct blobbo_t *blobbo, struct basket_t *basket, struc
     init_random();
     init_new_game();
     *game_state = GAMEPLAY_STATE;
+    SHOW_SPRITES;
     DISPLAY_ON;
 }

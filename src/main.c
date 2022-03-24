@@ -24,8 +24,8 @@ uint8_t game_state;
 uint16_t score;
 
 void main(void) {
-    init_intro_credits();
-    display_intro_credits();
+    // init_intro_credits();
+    // display_intro_credits();
 
     init_title_screen(&game_state);
     
@@ -40,8 +40,10 @@ void main(void) {
             update_apple_location(apple_ptr, basket_ptr, &score, &game_state);
         }
         else if (game_state == GAME_OVER_STATE) {
-            while(!(joypad() & J_START)) {}
-            init_gameplay_state(blobbo_ptr, basket_ptr, arrow_ptr, &game_state);
+            if (j_input & J_START) {
+                init_gameplay_state(blobbo_ptr, basket_ptr, arrow_ptr, &game_state);
+                spawn_apple(apple_ptr);
+            }
         }
         else if (game_state == TITLE_SCREEN_STATE) {
             display_title_screen();
