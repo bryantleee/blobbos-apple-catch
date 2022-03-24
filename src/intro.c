@@ -29,8 +29,10 @@ void display_intro_credits() {
 }
 
 void init_title_screen(uint8_t *game_state) {
+	DISPLAY_OFF;
 	*game_state = TITLE_SCREEN_STATE;
 	set_bkg_data(0, TITLE_SCREEN_TILESET_TILES_COUNT, title_screen_tileset);
+	DISPLAY_ON;
 }
 
 void display_title_screen() {

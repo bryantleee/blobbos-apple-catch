@@ -27,7 +27,6 @@ void main(void) {
     init_intro_credits();
     display_intro_credits();
     
-    DISPLAY_OFF;
     init_title_screen(&game_state);
     
     // game loop
@@ -45,12 +44,9 @@ void main(void) {
             init_gameplay_state(blobbo_ptr, basket_ptr, arrow_ptr, &game_state);
         }
         else if(game_state == TITLE_SCREEN_STATE) {
-            DISPLAY_ON;
             display_title_screen();
             if (j_input & J_START) {
-                DISPLAY_OFF;
                 init_gameplay_state(blobbo_ptr, basket_ptr, arrow_ptr, &game_state);
-                DISPLAY_ON;
                 spawn_apple(apple_ptr);
             }
         }
