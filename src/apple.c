@@ -44,7 +44,7 @@ void update_apple_location(struct apple_t *apple, struct basket_t *basket, uint1
 
 			if (apple_caught) {
 				play_apple_caught_sound();
-				*score ++;
+				(*score) ++;
 				increment_score_display();
 				spawn_apple(apple);
 			}

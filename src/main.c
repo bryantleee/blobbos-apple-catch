@@ -26,10 +26,10 @@ uint16_t score;
 void main(void) {
     init_intro_credits();
     display_intro_credits();
-    
+
     init_title_screen(&game_state);
     
-    // game loop
+    // main game loop
     while(TRUE) {
         uint8_t j_input = joypad();
 
@@ -37,13 +37,13 @@ void main(void) {
             update_blobbo_location(blobbo_ptr, j_input);
             update_basket_location(basket_ptr, blobbo_ptr);
             update_arrow_location(arrow_ptr, basket_ptr, &score, &game_state);
-            update_apple_location(apple_ptr, basket_ptr, &score, &game_state);            
+            update_apple_location(apple_ptr, basket_ptr, &score, &game_state);
         }
-        else if(game_state == GAME_OVER_STATE) {
+        else if (game_state == GAME_OVER_STATE) {
             while(!(joypad() & J_START)) {}
             init_gameplay_state(blobbo_ptr, basket_ptr, arrow_ptr, &game_state);
         }
-        else if(game_state == TITLE_SCREEN_STATE) {
+        else if (game_state == TITLE_SCREEN_STATE) {
             display_title_screen();
             if (j_input & J_START) {
                 init_gameplay_state(blobbo_ptr, basket_ptr, arrow_ptr, &game_state);
