@@ -1,3 +1,6 @@
+#ifndef APPLE_H_
+#define APPLE_H_
+
 #include "basket.h"
 
 #define APPLE_TL 8
@@ -30,3 +33,5 @@ void spawn_apple(struct apple_t *apple);
 void update_apple_location(struct apple_t *apple, struct basket_t *basket, uint16_t *score, uint8_t *game_state);
 
 void play_apple_caught_sound();
+
+#endif

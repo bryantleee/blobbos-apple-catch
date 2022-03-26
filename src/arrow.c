@@ -2,10 +2,10 @@
 #include <rand.h>
 #include <stdbool.h>
 
-#include "../res/arrow_sprite.h"
 #include "arrow.h"
 #include "basket.h"
 #include "utils.h"
+#include "../res/arrow_sprite.h"
 
 void init_arrow(struct arrow_t *arrow) {
 	set_sprite_data(25, 4, arrow_sprite);

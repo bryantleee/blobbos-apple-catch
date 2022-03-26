@@ -1,10 +1,10 @@
 #include <gbdk/platform.h>
 
-#include "../res/apple_sprite.h"
 #include "apple.h"
 #include "basket.h"
 #include "utils.h"
 #include "score_display.h"
+#include "../res/apple_sprite.h"
 
 void init_apple() {
     set_sprite_data(21, 4, apple_sprite);

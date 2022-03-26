@@ -9,6 +9,7 @@
 #include "apple.h"
 #include "utils.h"
 #include "intro.h"
+#include "pause.h"
 
 struct blobbo_t blobbo;
 struct basket_t basket;
@@ -44,7 +45,7 @@ void main(void) {
             update_apple_location(apple_ptr, basket_ptr, &score, &game_state);
 
             if (!(j_input & J_START) && start_pressed_last_frame) {
-                game_state = GAMEPLAY_PAUSED_STATE;
+                enter_pause_state(&game_state);
             }
             start_pressed_last_frame = j_input & J_START;
         }
@@ -63,7 +64,7 @@ void main(void) {
         }
         else if (game_state == GAMEPLAY_PAUSED_STATE) {
             if (!(j_input & J_START) && start_pressed_last_frame) {
-                game_state = GAMEPLAY_STATE;
+                exit_pause_state(&game_state);
             }
             start_pressed_last_frame = j_input & J_START;
         }

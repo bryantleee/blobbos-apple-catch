@@ -1,9 +1,9 @@
 #include <gbdk/platform.h>
 #include <stdbool.h>
 
-#include "../res/blobbo_sprite.h"
 #include "blobbo.h"
 #include "utils.h"
+#include "../res/blobbo_sprite.h"
 
 const uint8_t BLOBBO_STAND_SPEED = 2;
 const uint8_t BLOBBO_CROUCH_SPEED = 1;

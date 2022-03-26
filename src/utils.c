@@ -10,9 +10,10 @@
 #include "arrow.h"
 #include "apple.h"
 #include "score_display.h"
-#include "score_display.h"
 #include "intro.h"
+#include "pause.h"
 #include "../res/nature_background_tiles.h"
+#include "../res/pause_text_tiles.h"
 
 /**
     Blobbo is made of four 8x8 sprites mapped as follows:
@@ -46,15 +47,16 @@ void init_sound() {
 
 void init_random() {
     uint16_t seed = DIV_REG;
-    seed |= (uint16_t)DIV_REG << 8;    
+    seed |= (uint16_t)DIV_REG << 8;
     initrand(seed);
 }
 
 void init_new_game() {
     DISPLAY_OFF;
     set_bkg_data(0, NATURE_BACKGROUND_TILES_COUNT, nature_background_tileset);
-    set_bkg_tiles(0, 0, NATURE_BACKGROUND_TILES_WIDTH, NATURE_BACKGROUND_TILES_HEIGHT, nature_background_tilemap); 
+    set_bkg_tiles(0, 0, NATURE_BACKGROUND_TILES_WIDTH, NATURE_BACKGROUND_TILES_HEIGHT, nature_background_tilemap);
     init_score_display();
+    init_pause_state();
     reset_score_display();
     DISPLAY_ON;
 }

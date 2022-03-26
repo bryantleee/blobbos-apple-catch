@@ -22,22 +22,22 @@ void increment_score_display() {
 
 	// Check whether we have to increase other counters (10's, 100's, etc.)
 	// 10's
-	if (score_display_tilemap[4] == 0x6D) { 
+	if (score_display_tilemap[4] == 0x6D) {
 		score_display_tilemap[3] ++;
 		score_display_tilemap[4] -= 10;
 	}
 	// 100's
-	if (score_display_tilemap[3] == 0x6D) { 
+	if (score_display_tilemap[3] == 0x6D) {
 		score_display_tilemap[2] ++;
 		score_display_tilemap[3] -= 10;
 	}
 	// 1000's
-	if (score_display_tilemap[2] == 0x6D) { 
+	if (score_display_tilemap[2] == 0x6D) {
 		score_display_tilemap[1] ++;
 		score_display_tilemap[2] -= 10;
 	}
 	// 10000's
-	if (score_display_tilemap[1] == 0x6D) { 
+	if (score_display_tilemap[1] == 0x6D) {
 		score_display_tilemap[0] ++;
 		score_display_tilemap[1] -= 10;
 	}
