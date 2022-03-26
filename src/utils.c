@@ -52,12 +52,10 @@ void init_random() {
 
 void init_new_game() {
     DISPLAY_OFF;
-    
     set_bkg_data(0, NATURE_BACKGROUND_TILES_COUNT, nature_background_tileset);
     set_bkg_tiles(0, 0, NATURE_BACKGROUND_TILES_WIDTH, NATURE_BACKGROUND_TILES_HEIGHT, nature_background_tilemap); 
     init_score_display();
     reset_score_display();
-
     DISPLAY_ON;
 }
 
@@ -67,9 +65,7 @@ void init_game_over_state(uint8_t *game_state) {
 	NR12_REG = 0x73;
 	NR13_REG = 0x01;
 	NR14_REG = 0x90;
-    
     *game_state = GAME_OVER_STATE;
-
     HIDE_SPRITES;
 }
 
@@ -81,13 +77,14 @@ uint16_t get_random_number(uint16_t min, uint16_t max) {
     return rand() % (max + 1 - min) + min;
 }
 
-void init_gameplay_state(struct blobbo_t *blobbo, struct basket_t *basket, struct arrow_t *arrow, uint8_t *game_state) {
+void init_gameplay_state(struct blobbo_t *blobbo, struct basket_t *basket, struct arrow_t *arrow, uint8_t *game_state, uint16_t *score) {
     DISPLAY_OFF;
     init_sound();
     init_graphics(blobbo, basket, arrow);
     init_random();
     init_new_game();
     *game_state = GAMEPLAY_STATE;
+    *score = 0;
     SHOW_SPRITES;
     DISPLAY_ON;
 }

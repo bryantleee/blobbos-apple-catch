@@ -10,6 +10,7 @@
 void init_arrow(struct arrow_t *arrow) {
 	set_sprite_data(25, 4, arrow_sprite);
 	arrow->spawn_timer = 150;
+	arrow->is_active = FALSE;
 }
 
 void spawn_arrow(struct arrow_t *arrow) {

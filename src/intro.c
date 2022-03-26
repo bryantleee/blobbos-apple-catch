@@ -35,6 +35,16 @@ void init_title_screen(uint8_t *game_state) {
 	DISPLAY_ON;
 }
 
-void display_title_screen() {
+void update_title_screen(uint16_t *title_screen_time) {
 	set_bkg_tiles(0, 0, TITLE_SCREEN_TILEMAP_WIDTH, TITLE_SCREEN_TILEMAP_HEIGHT, title_screen_tilemap);
+	// if (*title_screen_time == 0) {
+	// 	set_bkg_tiles(0,15,4,2,blankBKG);
+	// 	set_bkg_tiles(15,15,4,2,blankBKG);
+	// 	*title_screen_time = 200;
+	// }
+	// else if(*title_screen_time == 100) {
+	// 	set_bkg_tiles(0,15,4,2,pressStartBKGLeft); 
+	// 	set_bkg_tiles(15,15,4,2,pressStartBKGRight);
+	// 	(*title_screen_time) --;
+	// }
 }
