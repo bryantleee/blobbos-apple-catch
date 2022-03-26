@@ -12,8 +12,10 @@
 #include "score_display.h"
 #include "intro.h"
 #include "pause.h"
+#include "game_over.h"
 #include "../res/nature_background_tiles.h"
 #include "../res/pause_text_tiles.h"
+#include "../res/game_over_text_tiles.h"
 
 /**
     Blobbo is made of four 8x8 sprites mapped as follows:
@@ -57,18 +59,9 @@ void init_new_game() {
     set_bkg_tiles(0, 0, NATURE_BACKGROUND_TILES_WIDTH, NATURE_BACKGROUND_TILES_HEIGHT, nature_background_tilemap);
     init_score_display();
     init_pause_state();
+    init_game_over_state();
     reset_score_display();
     DISPLAY_ON;
-}
-
-void init_game_over_state(uint8_t *game_state) {
-    NR10_REG = 0x15;
-	NR11_REG = 0x9B;
-	NR12_REG = 0x73;
-	NR13_REG = 0x01;
-	NR14_REG = 0x90;
-    *game_state = GAME_OVER_STATE;
-    HIDE_SPRITES;
 }
 
 bool is_colliding(uint8_t x1, uint8_t y1, uint8_t w1, uint8_t h1, uint8_t x2, uint8_t y2, uint8_t w2, uint8_t h2) {
@@ -79,7 +72,7 @@ uint16_t get_random_number(uint16_t min, uint16_t max) {
     return rand() % (max + 1 - min) + min;
 }
 
-void init_gameplay_state(struct blobbo_t *blobbo, struct basket_t *basket, struct apple_t *apple, struct arrow_t *arrow, uint8_t *game_state, uint16_t *score) {
+void enter_gameplay_state(struct blobbo_t *blobbo, struct basket_t *basket, struct apple_t *apple, struct arrow_t *arrow, uint8_t *game_state, uint16_t *score) {
     DISPLAY_OFF;
     init_sound();
     init_graphics(blobbo, basket, arrow);

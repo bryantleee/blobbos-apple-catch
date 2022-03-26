@@ -4,6 +4,7 @@
 #include "basket.h"
 #include "utils.h"
 #include "score_display.h"
+#include "game_over.h"
 #include "../res/apple_sprite.h"
 
 void init_apple() {
@@ -49,8 +50,8 @@ void update_apple_location(struct apple_t *apple, struct basket_t *basket, uint1
 				spawn_apple(apple);
 			}
 			else {
-				init_game_over_state(game_state);
-			}	
+				enter_game_over_state(game_state);
+			}
 		} 
 		else {
 			set_apple_sprite_location(apple->x, apple->y);
