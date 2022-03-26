@@ -4,6 +4,7 @@
 #include "blobbo.h"
 #include "basket.h"
 #include "arrow.h"
+#include "apple.h"
 
 extern const uint16_t LEFT_WALL;
 extern const uint16_t RIGHT_WALL;
@@ -31,6 +32,6 @@ bool is_colliding(uint8_t x1, uint8_t y1, uint8_t w1, uint8_t h1, uint8_t x2, ui
 // Get a random number in the range [min, max]
 uint16_t get_random_number(uint16_t min, uint16_t max);
 
-void init_gameplay_state(struct blobbo_t *blobbo, struct basket_t *basket, struct arrow_t *arrow, uint8_t *game_state, uint16_t *score);
+void init_gameplay_state(struct blobbo_t *blobbo, struct basket_t *basket, struct apple_t *apple, struct arrow_t *arrow, uint8_t *game_state, uint16_t *score);
 
 #endif

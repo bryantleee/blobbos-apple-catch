@@ -79,7 +79,7 @@ uint16_t get_random_number(uint16_t min, uint16_t max) {
     return rand() % (max + 1 - min) + min;
 }
 
-void init_gameplay_state(struct blobbo_t *blobbo, struct basket_t *basket, struct arrow_t *arrow, uint8_t *game_state, uint16_t *score) {
+void init_gameplay_state(struct blobbo_t *blobbo, struct basket_t *basket, struct apple_t *apple, struct arrow_t *arrow, uint8_t *game_state, uint16_t *score) {
     DISPLAY_OFF;
     init_sound();
     init_graphics(blobbo, basket, arrow);
@@ -89,4 +89,5 @@ void init_gameplay_state(struct blobbo_t *blobbo, struct basket_t *basket, struc
     *score = 0;
     SHOW_SPRITES;
     DISPLAY_ON;
+    spawn_apple(apple);
 }

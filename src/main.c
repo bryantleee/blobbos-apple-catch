@@ -51,15 +51,13 @@ void main(void) {
         }
         else if (game_state == GAME_OVER_STATE) {
             if (j_input & J_START) {
-                init_gameplay_state(blobbo_ptr, basket_ptr, arrow_ptr, &game_state, &score);
-                spawn_apple(apple_ptr);
+                init_gameplay_state(blobbo_ptr, basket_ptr, apple_ptr, arrow_ptr, &game_state, &score);
             }
         }
         else if (game_state == TITLE_SCREEN_STATE) {
             update_title_screen(&title_screen_timer);
             if (j_input & J_START) {
-                init_gameplay_state(blobbo_ptr, basket_ptr, arrow_ptr, &game_state, &score);
-                spawn_apple(apple_ptr);
+                init_gameplay_state(blobbo_ptr, basket_ptr, apple_ptr, arrow_ptr, &game_state, &score);
             }
         }
         else if (game_state == GAMEPLAY_PAUSED_STATE) {
