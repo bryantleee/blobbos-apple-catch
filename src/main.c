@@ -36,26 +36,24 @@ void main(void) {
     // main game loop
     while(TRUE) {
         uint8_t j_input = joypad();
-
+        
         if (game_state == GAMEPLAY_STATE) {
             update_blobbo_location(blobbo_ptr, j_input);
             update_basket_location(basket_ptr, blobbo_ptr);
             update_arrow_location(arrow_ptr, basket_ptr, &score, &game_state);
             update_apple_location(apple_ptr, basket_ptr, &score, &game_state);
-
             if (!(j_input & J_START) && start_pressed_last_frame) {
                 enter_pause_state(&game_state);
             }
-            start_pressed_last_frame = j_input & J_START;
         }
         else if (game_state == GAME_OVER_STATE) {
-            if (j_input & J_START) {
+            if (!(j_input & J_START) && start_pressed_last_frame) {
                 enter_gameplay_state(blobbo_ptr, basket_ptr, apple_ptr, arrow_ptr, &game_state, &score);
             }
         }
         else if (game_state == TITLE_SCREEN_STATE) {
             update_title_screen(&text_animation_timer);
-            if (j_input & J_START) {
+            if (!(j_input & J_START) && start_pressed_last_frame) {
                 enter_gameplay_state(blobbo_ptr, basket_ptr, apple_ptr, arrow_ptr, &game_state, &score);
             }
         }
@@ -63,8 +61,8 @@ void main(void) {
             if (!(j_input & J_START) && start_pressed_last_frame) {
                 exit_pause_state(&game_state);
             }
-            start_pressed_last_frame = j_input & J_START;
         }
+        start_pressed_last_frame = j_input & J_START;
         wait_vbl_done();
     }
 }
