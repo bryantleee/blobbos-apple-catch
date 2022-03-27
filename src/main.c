@@ -23,15 +23,14 @@ struct apple_t *apple_ptr = &apple;
 
 uint8_t game_state;
 uint16_t score;
-uint16_t title_screen_timer;
+uint16_t text_animation_timer;
 bool start_pressed_last_frame;
 
 void main(void) {
     init_intro_credits();
     display_intro_credits();
 
-    init_title_screen(&game_state);
-    title_screen_timer = 0;
+    init_title_screen(&game_state, &text_animation_timer);
     start_pressed_last_frame = FALSE;
 
     // main game loop
@@ -55,7 +54,7 @@ void main(void) {
             }
         }
         else if (game_state == TITLE_SCREEN_STATE) {
-            update_title_screen(&title_screen_timer);
+            update_title_screen(&text_animation_timer);
             if (j_input & J_START) {
                 enter_gameplay_state(blobbo_ptr, basket_ptr, apple_ptr, arrow_ptr, &game_state, &score);
             }

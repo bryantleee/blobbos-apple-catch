@@ -3,9 +3,11 @@
 #include "utils.h"
 #include "game_over.h"
 #include "../res/game_over_text_tiles.h"
+#include "../res/retry_text_tiles.h"
 
 void init_game_over_state() {
     set_bkg_data(0x73, GAME_OVER_TEXT_TILESET_COUNT, game_over_text_tileset);
+    set_bkg_data(0x78, RETRY_TEXT_TILESET_COUNT, retry_text_tileset);
 }
 
 void enter_game_over_state(uint8_t *game_state) {
