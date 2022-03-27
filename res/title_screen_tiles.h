@@ -5,6 +5,12 @@
 #define TITLE_SCREEN_TILEMAP_WIDTH 20
 #define TITLE_SCREEN_TILEMAP_HEIGHT 18
 
+#define PRESS_TEXT_TILEMAP_WIDTH 4
+#define PRESS_TEXT_TILEMAP_HEIGHT 2
+
+#define START_TEXT_TILEMAP_WIDTH 4
+#define START_TEXT_TILEMAP_HEIGHT 2
+
 extern const unsigned char title_screen_tileset[];
 
 extern unsigned char title_screen_tilemap[];

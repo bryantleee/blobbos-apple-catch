@@ -41,13 +41,13 @@ void init_title_screen(uint8_t *game_state, uint16_t *text_animation_timer) {
 
 void update_title_screen(uint16_t *title_screen_time) {
 	if (*title_screen_time == 0) {
-		set_bkg_tiles(PRESS_TEXT_X, PRESS_TEXT_Y, 4, 2, press_text_tilemap); 
-		set_bkg_tiles(15, 15, 4, 2, start_text_tilemap);
+		set_bkg_tiles(PRESS_TEXT_X, PRESS_TEXT_Y, PRESS_TEXT_TILEMAP_WIDTH, PRESS_TEXT_TILEMAP_HEIGHT, press_text_tilemap); 
+		set_bkg_tiles(START_TEXT_X, START_TEXT_Y, START_TEXT_TILEMAP_WIDTH, START_TEXT_TILEMAP_HEIGHT, start_text_tilemap);
 		*title_screen_time = ANIMATION_CYCLE_TIME;
 	}
 	else if(*title_screen_time == HALF_ANIMATION_CYCLE_TIME) {
-		set_bkg_tiles(PRESS_TEXT_X, PRESS_TEXT_Y, 4, 2, blank_tiles_tilemap);
-		set_bkg_tiles(15, 15, 4, 2, blank_tiles_tilemap);
+		set_bkg_tiles(PRESS_TEXT_X, PRESS_TEXT_Y, PRESS_TEXT_TILEMAP_WIDTH, PRESS_TEXT_TILEMAP_HEIGHT, blank_tiles_tilemap);
+		set_bkg_tiles(START_TEXT_X, START_TEXT_Y, START_TEXT_TILEMAP_WIDTH, START_TEXT_TILEMAP_HEIGHT, blank_tiles_tilemap);
 		(*title_screen_time) --;
 	}
 	else {

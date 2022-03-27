@@ -7,6 +7,9 @@
 #define PRESS_TEXT_X 2
 #define PRESS_TEXT_Y 15
 
+#define START_TEXT_X 15
+#define START_TEXT_Y 15
+
 void init_intro_credits();
 
 void display_intro_credits();
