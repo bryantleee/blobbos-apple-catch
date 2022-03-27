@@ -13,10 +13,10 @@
 
 extern const unsigned char title_screen_tileset[];
 
-extern unsigned char title_screen_tilemap[];
+extern const unsigned char title_screen_tilemap[];
 
-extern unsigned char press_text_tilemap[];
+extern const unsigned char press_text_tilemap[];
 
-extern unsigned char start_text_tilemap[];
+extern const unsigned char start_text_tilemap[];
 
 #endif
