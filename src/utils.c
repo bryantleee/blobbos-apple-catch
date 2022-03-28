@@ -13,7 +13,7 @@
 #include "intro.h"
 #include "pause.h"
 #include "game_over.h"
-#include "../res/nature_background_tiles.h"
+#include "../res/nature_tiles.h"
 #include "../res/pause_text_tiles.h"
 #include "../res/game_over_text_tiles.h"
 
@@ -44,8 +44,8 @@ void init_random() {
 }
 
 void init_new_game(uint16_t *text_animation_timer) {
-    set_bkg_data(0, NATURE_BACKGROUND_TILES_COUNT, nature_background_tileset);
-    set_bkg_tiles(0, 0, NATURE_BACKGROUND_TILES_WIDTH, NATURE_BACKGROUND_TILES_HEIGHT, nature_background_tilemap);
+    set_bkg_data(0, NATURE_TILES_COUNT, nature_tileset);
+    set_bkg_tiles(0, 0, NATURE_TILES_WIDTH, NATURE_TILES_HEIGHT, nature_tilemap);
     init_score_display();
     init_pause_state();
     init_game_over_state(text_animation_timer);
