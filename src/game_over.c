@@ -4,10 +4,12 @@
 #include "game_over.h"
 #include "../res/game_over_text_tiles.h"
 #include "../res/retry_text_tiles.h"
+#include "../res/nature_background_tiles.h"
 
-void init_game_over_state() {
+void init_game_over_state(uint16_t *game_over_animation_timer) {
     set_bkg_data(0x73, GAME_OVER_TEXT_TILESET_COUNT, game_over_text_tileset);
     set_bkg_data(0x78, RETRY_TEXT_TILESET_COUNT, retry_text_tileset);
+    *game_over_animation_timer = ANIMATION_CYCLE_TIME;
 }
 
 void enter_game_over_state(uint8_t *game_state) {
@@ -19,4 +21,19 @@ void enter_game_over_state(uint8_t *game_state) {
     *game_state = GAME_OVER_STATE;
     HIDE_SPRITES;
     set_bkg_tiles(GAME_OVER_X, GAME_OVER_Y, GAME_OVER_TEXT_TILEMAP_WIDTH, GAME_OVER_TEXT_TILEMAP_HEIGHT, game_over_text_tilemap);
+    set_bkg_tiles(0, 0, RETRY_TEXT_TILEMAP_WIDTH, RETRY_TEXT_TILEMAP_HEIGHT, retry_text_tilemap);
+}
+
+void update_game_over(uint16_t *game_over_animation_timer) {
+    if (*game_over_animation_timer == 0) {
+		set_bkg_tiles(0, 0, RETRY_TEXT_TILEMAP_WIDTH, RETRY_TEXT_TILEMAP_HEIGHT, retry_text_tilemap); 
+		*game_over_animation_timer = ANIMATION_CYCLE_TIME;
+	}
+	else if(*game_over_animation_timer == HALF_ANIMATION_CYCLE_TIME) {
+		set_bkg_tiles(0, 0, RETRY_TEXT_TILEMAP_WIDTH, RETRY_TEXT_TILEMAP_HEIGHT, nature_background_tilemap); 
+		(*game_over_animation_timer) --;
+	}
+	else {
+		(*game_over_animation_timer) --;
+	}
 }

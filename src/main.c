@@ -10,6 +10,7 @@
 #include "utils.h"
 #include "intro.h"
 #include "pause.h"
+#include "game_over.h"
 
 struct blobbo_t blobbo;
 struct basket_t basket;
@@ -47,14 +48,15 @@ void main(void) {
             }
         }
         else if (game_state == GAME_OVER_STATE) {
+            update_game_over(&text_animation_timer);
             if (!(j_input & J_START) && start_pressed_last_frame) {
-                enter_gameplay_state(blobbo_ptr, basket_ptr, apple_ptr, arrow_ptr, &game_state, &score);
+                enter_gameplay_state(blobbo_ptr, basket_ptr, apple_ptr, arrow_ptr, &game_state, &score, &text_animation_timer);
             }
         }
         else if (game_state == TITLE_SCREEN_STATE) {
             update_title_screen(&text_animation_timer);
             if (!(j_input & J_START) && start_pressed_last_frame) {
-                enter_gameplay_state(blobbo_ptr, basket_ptr, apple_ptr, arrow_ptr, &game_state, &score);
+                enter_gameplay_state(blobbo_ptr, basket_ptr, apple_ptr, arrow_ptr, &game_state, &score, &text_animation_timer);
             }
         }
         else if (game_state == GAMEPLAY_PAUSED_STATE) {
