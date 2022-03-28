@@ -12,10 +12,10 @@
 #define BLOBBO_SPRITE_BL 2
 #define BLOBBO_SPRITE_BR 3
 
-#define BLOBBO_DEFAULT_Y 121
+#define BLOBBO_STAND_SPEED 2
+#define BLOBBO_CROUCH_SPEED 1
 
-extern const uint8_t BLOBBO_STAND_SPEED;
-extern const uint8_t BLOBBO_CROUCH_SPEED;
+#define BLOBBO_DEFAULT_Y 121
 
 typedef struct {
     uint16_t x, y;

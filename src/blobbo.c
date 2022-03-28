@@ -5,9 +5,13 @@
 #include "utils.h"
 #include "../res/blobbo_sprite.h"
 
-const uint8_t BLOBBO_STAND_SPEED = 2;
-const uint8_t BLOBBO_CROUCH_SPEED = 1;
-
+/**
+    Blobbo is made of four 8x8 sprites mapped as follows:
+        sprite 0: top left quarter of body (tl)
+        sprite 1: top right quarter of body (tr)
+        sprite 2: bottom left quarter of body (bl)
+        sprite 3: bottom right quarter of body (br)
+**/
 
 void set_blobbo_sprite_location(uint16_t x, uint16_t y) {
     uint16_t x1 = x + 8;

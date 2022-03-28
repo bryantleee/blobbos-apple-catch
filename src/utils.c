@@ -17,34 +17,24 @@
 #include "../res/pause_text_tiles.h"
 #include "../res/game_over_text_tiles.h"
 
-/**
-    Blobbo is made of four 8x8 sprites mapped as follows:
-        sprite 0: top left quarter of body (tl)
-        sprite 1: top right quarter of body (tr)
-        sprite 2: bottom left quarter of body (bl)
-        sprite 3: bottom right quarter of body (br)
-**/
-
 const uint16_t LEFT_WALL = DEVICE_SPRITE_PX_OFFSET_X;
 const uint16_t RIGHT_WALL = DEVICE_SCREEN_PX_WIDTH + DEVICE_SPRITE_PX_OFFSET_X - 16;
 const uint16_t BOTTOM_WALL = DEVICE_SCREEN_PX_HEIGHT;
 
 void init_graphics(blobbo_t *blobbo, basket_t *basket, arrow_t *arrow, apple_t *apple) {
-	SPRITES_8x8; // Set sprites to 8x8 mode
-
+	SPRITES_8x8;
 	init_blobbo(blobbo);
     init_basket(basket, blobbo);
     init_apple(apple);
     init_arrow(arrow);
-
     SHOW_BKG;
     SHOW_SPRITES;
 }
 
 void init_sound() {
-    NR52_REG = 0x8F; //turn on the sound
-	NR51_REG = 0x11; //enable the sound channels
-	NR50_REG = 0x77; //increase the volume to its max
+    NR52_REG = 0x8F; // turn on the sound
+	NR51_REG = 0x11; // enable the sound channels
+	NR50_REG = 0x77; // increase the volume to its max
 }
 
 void init_random() {
