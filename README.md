@@ -7,6 +7,8 @@ Download this repository and [GBDK 2020](https://github.com/gbdk-2020). Add this
 ```
 make
 ```
+Compilation last verified with GBDK 4.0.6.
+
 ## Release History
 ### GBDK 2.0.0
 * Rewrote the entire codebase

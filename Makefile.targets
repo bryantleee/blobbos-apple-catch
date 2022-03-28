@@ -1,4 +1,3 @@
-
 # Platform specific flags for compiling (only populate if they're both present)
 ifneq ($(strip $(PORT)),)
 ifneq ($(strip $(PLAT)),)
@@ -47,4 +46,3 @@ gg-clean:
 	${MAKE} clean-target EXT=gg
 gg:
 	${MAKE} build-target PORT=z80 PLAT=gg EXT=gg
-
