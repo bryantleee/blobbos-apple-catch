@@ -12,6 +12,7 @@ void init_arrow(struct arrow_t *arrow) {
 	set_sprite_data(25, 4, arrow_sprite);
 	arrow->spawn_timer = 150;
 	arrow->is_active = FALSE;
+	arrow->speed = ARROW_BASE_SPEED;
 }
 
 void spawn_arrow(struct arrow_t *arrow) {
@@ -38,10 +39,11 @@ void spawn_arrow(struct arrow_t *arrow) {
 }
 
 void update_arrow_location(struct arrow_t *arrow, struct basket_t *basket, uint16_t *score, uint8_t *game_state) {
+	if (*score == MIN_SCORE_FOR_ARROW_TO_ACCELERATE) {
+		arrow->speed = ARROW_BASE_SPEED + 1;
+	}
 	if (arrow->is_active) {
-
-		arrow->x = arrow->is_moving_right ? arrow->x + ARROW_SPEED : arrow->x - ARROW_SPEED;
-	
+		arrow->x = arrow->is_moving_right ? arrow->x + arrow->speed : arrow->x - arrow->speed;
 		bool arrow_collided = is_colliding(arrow->x, arrow->y, ARROW_WIDTH, ARROW_HEIGHT, basket->x, basket->y, BASKET_WIDTH, BASKET_HEIGHT);
 		if ((arrow->is_moving_right && arrow->x >= RIGHT_WALL) || (!(arrow->is_moving_right) && arrow->x <= LEFT_WALL) || arrow_collided) {
 			arrow->is_active = FALSE;
