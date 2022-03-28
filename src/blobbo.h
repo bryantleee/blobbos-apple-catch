@@ -17,11 +17,11 @@
 extern const uint8_t BLOBBO_STAND_SPEED;
 extern const uint8_t BLOBBO_CROUCH_SPEED;
 
-struct blobbo_t {
+typedef struct {
     uint16_t x, y;
     uint8_t state, state_timer, speed;
     bool is_moving_down;
-};
+} blobbo_t;
 
 void set_blobbo_sprite_location(uint16_t x, uint16_t y);
 
@@ -35,8 +35,8 @@ void set_blobbo_crouching();
 
 void set_blobbo_half_crouching();
 
-void init_blobbo(struct blobbo_t *blobbo);
+void init_blobbo(blobbo_t *blobbo);
 
-void update_blobbo_location(struct blobbo_t *blobbo, uint8_t j_input);
+void update_blobbo_location(blobbo_t *blobbo, uint8_t j_input);
 
 #endif

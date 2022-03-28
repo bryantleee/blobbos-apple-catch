@@ -8,14 +8,14 @@
 #include "game_over.h"
 #include "../res/arrow_sprite.h"
 
-void init_arrow(struct arrow_t *arrow) {
+void init_arrow(arrow_t *arrow) {
 	set_sprite_data(25, 4, arrow_sprite);
 	arrow->spawn_timer = 150;
 	arrow->is_active = FALSE;
 	arrow->speed = ARROW_BASE_SPEED;
 }
 
-void spawn_arrow(struct arrow_t *arrow) {
+void spawn_arrow(arrow_t *arrow) {
 	arrow->is_moving_right = get_random_number(0, 1);
 	arrow->y = ARROW_DEFAULT_Y;
 	arrow->is_active = TRUE;
@@ -38,7 +38,7 @@ void spawn_arrow(struct arrow_t *arrow) {
 	set_arrow_sprite_location(arrow->x, arrow->y); // TODO change name to tile_locations or something better
 }
 
-void update_arrow_location(struct arrow_t *arrow, struct basket_t *basket, uint16_t *score, uint8_t *game_state) {
+void update_arrow_location(arrow_t *arrow, basket_t *basket, uint16_t *score, uint8_t *game_state) {
 	if (*score == MIN_SCORE_FOR_ARROW_TO_ACCELERATE) {
 		arrow->speed = ARROW_BASE_SPEED + 1;
 	}
@@ -77,6 +77,6 @@ void hide_arrow() {
 	set_sprite_tile(ARROW_SPRITE_R, 18);
 } 
 
-void set_arrow_spawn_time(struct arrow_t *arrow) {
+void set_arrow_spawn_time(arrow_t *arrow) {
 	arrow->spawn_timer = get_random_number(MIN_ARROW_SPAWN_TIME, MAX_ARROW_SPAWN_TIME);
 }

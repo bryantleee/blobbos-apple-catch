@@ -12,15 +12,15 @@
 #include "pause.h"
 #include "game_over.h"
 
-struct blobbo_t blobbo;
-struct basket_t basket;
-struct arrow_t arrow;
-struct apple_t apple;
+blobbo_t blobbo;
+basket_t basket;
+arrow_t arrow;
+apple_t apple;
 
-struct blobbo_t *blobbo_ptr = &blobbo;
-struct basket_t *basket_ptr = &basket;
-struct arrow_t *arrow_ptr = &arrow;
-struct apple_t *apple_ptr = &apple;
+blobbo_t *blobbo_ptr = &blobbo;
+basket_t *basket_ptr = &basket;
+arrow_t *arrow_ptr = &arrow;
+apple_t *apple_ptr = &apple;
 
 uint8_t game_state;
 uint16_t score;

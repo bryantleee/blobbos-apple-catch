@@ -9,7 +9,7 @@ void set_basket_sprite_location(uint16_t x, uint16_t y) {
 	move_sprite(5, x + 8, y);
 }
 
-void update_basket_location(struct basket_t *basket, struct blobbo_t *blobbo) {
+void update_basket_location(basket_t *basket, blobbo_t *blobbo) {
     basket->x = blobbo->x;
 
     if (blobbo->state == STANDING_STATE) {
@@ -24,7 +24,7 @@ void update_basket_location(struct basket_t *basket, struct blobbo_t *blobbo) {
     set_basket_sprite_location(basket->x, basket->y);
 }
 
-void init_basket(struct basket_t *basket, struct blobbo_t *blobbo) {
+void init_basket(basket_t *basket, blobbo_t *blobbo) {
     // Load the basket tiles into VRAM
 	set_sprite_data(19, 2, basket_sprite);
     set_sprite_tile(BASKET_SPRITE_L, 19);

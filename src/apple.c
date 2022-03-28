@@ -7,12 +7,12 @@
 #include "game_over.h"
 #include "../res/apple_sprite.h"
 
-void init_apple(struct apple_t *apple) {
+void init_apple(apple_t *apple) {
     set_sprite_data(21, 4, apple_sprite);
 	apple->speed = APPLE_BASE_SPEED;
 }
 
-void spawn_apple(struct apple_t * apple) {
+void spawn_apple(apple_t * apple) {
 	apple->drop_timer = APPLE_DANGLE_TIME;
 	apple->x = get_random_number(LEFT_WALL, RIGHT_WALL);
 	apple->y = get_random_number(APPLE_MIN_SPAWN_Y, APPLE_MAX_SPAWN_Y);
@@ -35,7 +35,7 @@ void set_apple_sprite_location(uint16_t x, uint16_t y) {
 	move_sprite(APPLE_BR, x1, y1);
 }
 
-void update_apple_location(struct apple_t *apple, struct basket_t *basket, uint16_t *score, uint8_t *game_state) {
+void update_apple_location(apple_t *apple, basket_t *basket, uint16_t *score, uint8_t *game_state) {
 	if (apple->drop_timer == 0) {
 		apple->y += apple->speed;
 		bool apple_caught = is_colliding(apple->x, apple->y, APPLE_WIDTH, APPLE_HEIGHT, basket->x, basket->y, BASKET_WIDTH, BASKET_HEIGHT);

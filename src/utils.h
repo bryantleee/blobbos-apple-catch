@@ -16,7 +16,7 @@ extern const uint16_t BOTTOM_WALL;
 #define GAMEPLAY_PAUSED_STATE 2
 #define GAME_OVER_STATE 3
 
-void init_graphics(struct blobbo_t *blobbo, struct basket_t *basket, struct arrow_t *arrow, struct apple_t *apple);
+void init_graphics(blobbo_t *blobbo, basket_t *basket, arrow_t *arrow, apple_t *apple);
 
 void init_random();
 
@@ -30,6 +30,6 @@ bool is_colliding(uint8_t x1, uint8_t y1, uint8_t w1, uint8_t h1, uint8_t x2, ui
 // Get a random number in the range [min, max]
 uint16_t get_random_number(uint16_t min, uint16_t max);
 
-void enter_gameplay_state(struct blobbo_t *blobbo, struct basket_t *basket, struct apple_t *apple, struct arrow_t *arrow, uint8_t *game_state, uint16_t *score, uint16_t *text_animation_timer);
+void enter_gameplay_state(blobbo_t *blobbo, basket_t *basket, apple_t *apple, arrow_t *arrow, uint8_t *game_state, uint16_t *score, uint16_t *text_animation_timer);
 
 #endif

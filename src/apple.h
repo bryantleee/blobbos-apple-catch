@@ -17,20 +17,20 @@
 #define APPLE_DANGLE_TIME 25
 #define APPLE_BASE_SPEED 2
 
-struct apple_t {
+typedef struct {
     uint16_t x, y, drop_timer;
     uint8_t speed;
-};
+} apple_t;
 
-void init_apple(struct apple_t *apple);
+void init_apple(apple_t *apple);
 
 void set_apple_sprite_location(uint16_t x, uint16_t y);
 
 void hide_apple();
 
-void spawn_apple(struct apple_t *apple);
+void spawn_apple(apple_t *apple);
 
-void update_apple_location(struct apple_t *apple, struct basket_t *basket, uint16_t *score, uint8_t *game_state);
+void update_apple_location(apple_t *apple, basket_t *basket, uint16_t *score, uint8_t *game_state);
 
 void play_apple_caught_sound();
 

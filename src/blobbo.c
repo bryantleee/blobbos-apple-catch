@@ -54,7 +54,7 @@ void set_blobbo_half_crouching() {
 	set_sprite_tile(BLOBBO_SPRITE_BR, 15);
 }
 
-void init_blobbo(struct blobbo_t *blobbo) {
+void init_blobbo(blobbo_t *blobbo) {
     // Load the Blobbo tiles into VRAM
 	set_sprite_data(0, 19, blobbo_sprite);
 
@@ -71,7 +71,7 @@ void init_blobbo(struct blobbo_t *blobbo) {
 	set_blobbo_sprite_location(blobbo->x, blobbo->y);
 }
 
-void update_blobbo_location(struct blobbo_t *blobbo, uint8_t j_input) {
+void update_blobbo_location(blobbo_t *blobbo, uint8_t j_input) {
 	// Code to handle Blobbo's state changing
 	if (j_input & J_DOWN || j_input & J_A) {
 		if (blobbo->state == STANDING_STATE) {
