@@ -11,18 +11,18 @@
 #define APPLE_WIDTH 16
 #define APPLE_HEIGHT 16
 
-#define APPLE_MIN_SPAWN_Y 0
-#define APPLE_MAX_SPAWN_Y 38
+#define APPLE_MIN_SPAWN_Y DEVICE_SPRITE_PX_OFFSET_Y
+#define APPLE_MAX_SPAWN_Y 50
 
 #define APPLE_DANGLE_TIME 25
-#define APPLE_SPEED 2
+#define APPLE_BASE_SPEED 2
 
 struct apple_t {
     uint16_t x, y, drop_timer;
     uint8_t speed;
 };
 
-void init_apple();
+void init_apple(struct apple_t *apple);
 
 void set_apple_sprite_location(uint16_t x, uint16_t y);
 

@@ -29,12 +29,12 @@ const uint16_t LEFT_WALL = DEVICE_SPRITE_PX_OFFSET_X;
 const uint16_t RIGHT_WALL = DEVICE_SCREEN_PX_WIDTH + DEVICE_SPRITE_PX_OFFSET_X - 16;
 const uint16_t BOTTOM_WALL = DEVICE_SCREEN_PX_HEIGHT;
 
-void init_graphics(struct blobbo_t *blobbo, struct basket_t *basket, struct arrow_t *arrow) {
+void init_graphics(struct blobbo_t *blobbo, struct basket_t *basket, struct arrow_t *arrow, struct apple_t *apple) {
 	SPRITES_8x8; // Set sprites to 8x8 mode
 
 	init_blobbo(blobbo);
     init_basket(basket, blobbo);
-    init_apple();
+    init_apple(apple);
     init_arrow(arrow);
 
     SHOW_BKG;
@@ -73,7 +73,7 @@ uint16_t get_random_number(uint16_t min, uint16_t max) {
 void enter_gameplay_state(struct blobbo_t *blobbo, struct basket_t *basket, struct apple_t *apple, struct arrow_t *arrow, uint8_t *game_state, uint16_t *score, uint16_t *text_animation_timer) {
     DISPLAY_OFF;
     init_sound();
-    init_graphics(blobbo, basket, arrow);
+    init_graphics(blobbo, basket, arrow, apple);
     init_random();
     init_new_game(text_animation_timer);
     *game_state = GAMEPLAY_STATE;
