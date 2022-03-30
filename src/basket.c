@@ -25,7 +25,6 @@ void update_basket_location(basket_t *basket, blobbo_t *blobbo) {
 }
 
 void init_basket(basket_t *basket, blobbo_t *blobbo) {
-    // Load the basket tiles into VRAM
 	set_sprite_data(19, 2, basket_sprite);
     set_sprite_tile(BASKET_SPRITE_L, 19);
     set_sprite_tile(BASKET_SPRITE_R, 20);

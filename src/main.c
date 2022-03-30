@@ -28,8 +28,7 @@ uint16_t text_animation_timer;
 bool start_pressed_last_frame;
 
 void main(void) {
-    init_intro_credits();
-    display_intro_credits();
+    enter_intro_credits_state();
 
     init_title_screen(&game_state, &text_animation_timer);
     start_pressed_last_frame = FALSE;

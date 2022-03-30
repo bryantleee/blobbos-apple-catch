@@ -37,6 +37,8 @@ void set_blobbo_half_crouching();
 
 void init_blobbo(blobbo_t *blobbo);
 
+void reset_blobbo(blobbo_t *blobbo);
+
 void update_blobbo_location(blobbo_t *blobbo, uint8_t j_input);
 
 #endif

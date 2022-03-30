@@ -10,9 +10,7 @@
 #define START_TEXT_X 15
 #define START_TEXT_Y 15
 
-void init_intro_credits();
-
-void display_intro_credits();
+void enter_intro_credits_state();
 
 void init_title_screen(uint8_t *game_state, uint16_t *text_animation_timer);
 

@@ -20,7 +20,7 @@ void init_graphics(blobbo_t *blobbo, basket_t *basket, arrow_t *arrow, apple_t *
 
 void init_random();
 
-void init_new_game(uint16_t *text_animation_timer);
+void reset_game();
 
 void init_sound();
 
