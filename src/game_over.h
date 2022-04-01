@@ -8,7 +8,7 @@
 #define RETRY_TEXT_Y 0
 
 #define ANIMATION_CYCLE_TIME 100
-#define HALF_ANIMATION_CYCLE_TIME ANIMATION_CYCLE_TIME/2
+#define HALF_ANIMATION_CYCLE_TIME ANIMATION_CYCLE_TIME / 2 
 
 void init_game_over_state(uint16_t *game_over_animation_timer);
 

@@ -1,8 +1,6 @@
 #include <stdio.h>
-
 #include <gbdk/platform.h>
 #include <gbdk/console.h>
-
 #include "blobbo.h"
 #include "basket.h"
 #include "arrow.h"
@@ -28,7 +26,7 @@ uint16_t text_animation_timer;
 bool start_pressed_last_frame;
 
 void main(void) {
-    // enter_intro_credits_state();
+    enter_intro_credits_state();
 
     init_title_screen(&game_state, &text_animation_timer);
     start_pressed_last_frame = FALSE;

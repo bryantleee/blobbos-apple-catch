@@ -1,6 +1,5 @@
 #include <gbdk/platform.h>
 #include <stdbool.h>
-
 #include "../res/score_display_tiles.h"
 #include "utils.h"
 #include "score_display.h"

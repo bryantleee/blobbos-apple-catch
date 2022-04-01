@@ -1,5 +1,4 @@
 #include <gbdk/platform.h>
-
 #include "apple.h"
 #include "basket.h"
 #include "utils.h"

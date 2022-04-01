@@ -3,7 +3,6 @@
 #include <gbdk/platform.h>
 #include <gbdk/console.h>
 #include <rand.h>
-
 #include "utils.h"
 #include "blobbo.h"
 #include "basket.h"

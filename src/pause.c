@@ -2,7 +2,6 @@
 #include <gbdk/console.h>
 #include "utils.h"
 #include "pause.h"
-
 #include "../res/pause_text_tiles.h"
 #include "../res/blank_tiles.h"
 

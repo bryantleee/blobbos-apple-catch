@@ -1,5 +1,4 @@
 #include <gbdk/platform.h>
-
 #include "blobbo.h"
 #include "basket.h"
 #include "../res/basket_sprite.h"

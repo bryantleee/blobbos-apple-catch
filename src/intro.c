@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <gbdk/platform.h>
-
 #include "utils.h"
 #include "intro.h"
 #include "../res/title_screen_tiles.h"
