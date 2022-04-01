@@ -1,7 +1,6 @@
 #include <gbdk/platform.h>
 #include <rand.h>
 #include <stdbool.h>
-
 #include "arrow.h"
 #include "basket.h"
 #include "utils.h"
