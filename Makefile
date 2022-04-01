@@ -24,7 +24,7 @@ LCCFLAGS += -Wl-j -Wm-yoA -Wm-ya4 -autobank -Wb-ext=.rel -Wb-v # MBC + Autobanki
 # LCCFLAGS += -v     # Uncomment for lcc verbose output
 
 # You can set the name of the ROM file here
-PROJECTNAME = AppleCatchRemastered
+PROJECTNAME = Blobbo\'s\ Apple\ Catch
 
 # EXT?=gb # Only sets extension to default (game boy .gb) if not populated
 SRCDIR      = src
@@ -70,7 +70,6 @@ clean:
 
 # Include available build targets
 include Makefile.targets
-
 
 # create necessary directories after Makefile is parsed but before build
 # info prevents the command from being pasted into the makefile
