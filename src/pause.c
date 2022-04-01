@@ -23,8 +23,8 @@ void exit_pause_state(uint8_t *game_state) {
 
 void play_pause_button_noise() {
     NR10_REG = 0x23;
-	NR11_REG = 0xBA;
-	NR12_REG = 0x6B;
-	NR13_REG = 0x0A;
-	NR14_REG = 0x85;
+    NR11_REG = 0xBA;
+    NR12_REG = 0x6B;
+    NR13_REG = 0x0A;
+    NR14_REG = 0x85;
 }
