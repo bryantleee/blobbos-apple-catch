@@ -35,7 +35,7 @@ void set_blobbo_crouching();
 
 void set_blobbo_half_crouching();
 
-void init_blobbo(blobbo_t *blobbo);
+void init_blobbo_graphics();
 
 void reset_blobbo(blobbo_t *blobbo);
 

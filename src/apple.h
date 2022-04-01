@@ -22,9 +22,13 @@ typedef struct {
     uint8_t speed;
 } apple_t;
 
-void init_apple(apple_t *apple);
+void init_apple_graphics();
+
+void reset_apple(apple_t *apple);
 
 void set_apple_sprite_location(uint16_t x, uint16_t y);
+
+void show_apple();
 
 void hide_apple();
 

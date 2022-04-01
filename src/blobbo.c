@@ -58,10 +58,9 @@ void set_blobbo_half_crouching() {
 	set_sprite_tile(BLOBBO_SPRITE_BR, 15);
 }
 
-void init_blobbo(blobbo_t *blobbo) {
+void init_blobbo_graphics() {
     // Load the Blobbo tiles into VRAM
 	set_sprite_data(0, 19, blobbo_sprite);
-	reset_blobbo(blobbo_t blobbo);
 }
 
 void reset_blobbo(blobbo_t *blobbo) {
