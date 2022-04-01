@@ -58,10 +58,12 @@ void set_blobbo_half_crouching() {
 	set_sprite_tile(BLOBBO_SPRITE_BR, 15);
 }
 
-void init_blobbo(blobbo_t *blobbo) {
+void init_blobbo_graphics() {
     // Load the Blobbo tiles into VRAM
 	set_sprite_data(0, 19, blobbo_sprite);
+}
 
+void reset_blobbo(blobbo_t *blobbo) {
 	// Start facing forward
 	set_blobbo_forward();
 
@@ -71,7 +73,7 @@ void init_blobbo(blobbo_t *blobbo) {
 	blobbo->state = STANDING_STATE;
 	blobbo->state_timer = 0;
 	blobbo->speed = BLOBBO_STAND_SPEED;
-	bool is_moving_down = FALSE;
+	blobbo->is_moving_down = FALSE;
 	set_blobbo_sprite_location(blobbo->x, blobbo->y);
 }
 

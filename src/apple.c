@@ -7,8 +7,11 @@
 #include "game_over.h"
 #include "../res/apple_sprite.h"
 
-void init_apple(apple_t *apple) {
+void init_apple_graphics() {
     set_sprite_data(21, 4, apple_sprite);
+}
+
+void reset_apple(apple_t *apple) {
 	apple->speed = APPLE_BASE_SPEED;
 }
 
@@ -16,13 +19,8 @@ void spawn_apple(apple_t * apple) {
 	apple->drop_timer = APPLE_DANGLE_TIME;
 	apple->x = get_random_number(LEFT_WALL, RIGHT_WALL);
 	apple->y = get_random_number(APPLE_MIN_SPAWN_Y, APPLE_MAX_SPAWN_Y);
-
-    set_sprite_tile(APPLE_TL, 21);
-	set_sprite_tile(APPLE_BL, 22);
-	set_sprite_tile(APPLE_TR, 23);
-	set_sprite_tile(APPLE_BR, 24);
-	
 	set_apple_sprite_location(apple->x, apple->y);
+	show_apple();
 }
 
 void set_apple_sprite_location(uint16_t x, uint16_t y) {
@@ -69,6 +67,13 @@ void play_apple_caught_sound() {
 	NR12_REG = 0x73;
 	NR13_REG = 0x01;
 	NR14_REG = 0x85;
+}
+
+void show_apple() {
+	set_sprite_tile(APPLE_TL, 21);
+	set_sprite_tile(APPLE_BL, 22);
+	set_sprite_tile(APPLE_TR, 23);
+	set_sprite_tile(APPLE_BR, 24);
 }
 
 void hide_apple() {

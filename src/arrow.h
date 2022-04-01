@@ -25,7 +25,7 @@ typedef struct {
     uint8_t speed;
 } arrow_t;
 
-void init_arrow(arrow_t *arrow);
+void init_arrow_graphics();
 
 void spawn_arrow(arrow_t *arrow);
 
@@ -36,5 +36,7 @@ void update_arrow_location(arrow_t *arrow, basket_t *basket, uint16_t *score, ui
 void hide_arrow();
 
 void set_arrow_spawn_time(arrow_t *arrow);
+
+void reset_arrow(arrow_t *arrow);
 
 #endif

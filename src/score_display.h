@@ -4,7 +4,7 @@
 #define SCORE_DISPLAY_X 15
 #define SCORE_DISPLAY_Y 17
 
-void init_score_display();
+void init_score_display_graphics();
 
 void reset_score_display();
 

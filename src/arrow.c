@@ -8,8 +8,11 @@
 #include "game_over.h"
 #include "../res/arrow_sprite.h"
 
-void init_arrow(arrow_t *arrow) {
+void init_arrow_graphics() {
 	set_sprite_data(25, 4, arrow_sprite);
+}
+
+void reset_arrow(arrow_t *arrow) {
 	arrow->spawn_timer = 150;
 	arrow->is_active = FALSE;
 	arrow->speed = ARROW_BASE_SPEED;

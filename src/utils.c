@@ -21,14 +21,14 @@ const uint16_t LEFT_WALL = DEVICE_SPRITE_PX_OFFSET_X;
 const uint16_t RIGHT_WALL = DEVICE_SCREEN_PX_WIDTH + DEVICE_SPRITE_PX_OFFSET_X - 16;
 const uint16_t BOTTOM_WALL = DEVICE_SCREEN_PX_HEIGHT;
 
-void init_graphics(blobbo_t *blobbo, basket_t *basket, arrow_t *arrow, apple_t *apple) {
-	SPRITES_8x8;
-	init_blobbo(blobbo);
-    init_basket(basket, blobbo);
-    init_apple(apple);
-    init_arrow(arrow);
-    SHOW_BKG;
-    SHOW_SPRITES;
+void init_gameplay_state_graphics(uint16_t *text_animation_timer) {
+	init_blobbo_graphics();
+    init_basket_graphics();
+    init_apple_graphics();
+    init_arrow_graphics();
+    init_score_display_graphics();
+    init_pause_state();
+    init_game_over_state(text_animation_timer);
 }
 
 void init_sound() {
@@ -43,15 +43,6 @@ void init_random() {
     initrand(seed);
 }
 
-void init_new_game(uint16_t *text_animation_timer) {
-    set_bkg_data(0, NATURE_TILES_COUNT, nature_tileset);
-    set_bkg_tiles(0, 0, NATURE_TILES_WIDTH, NATURE_TILES_HEIGHT, nature_tilemap);
-    init_score_display();
-    init_pause_state();
-    init_game_over_state(text_animation_timer);
-    reset_score_display();
-}
-
 bool is_colliding(uint8_t x1, uint8_t y1, uint8_t w1, uint8_t h1, uint8_t x2, uint8_t y2, uint8_t w2, uint8_t h2) {
     return (x1 < (x2 + w2)) && ((x1 + w1) > x2) && (y1 < (h2 + y2)) && ((y1 + h1) > y2);
 }
@@ -60,15 +51,28 @@ uint16_t get_random_number(uint16_t min, uint16_t max) {
     return rand() % (max + 1 - min) + min;
 }
 
-void enter_gameplay_state(blobbo_t *blobbo, basket_t *basket, apple_t *apple, arrow_t *arrow, uint8_t *game_state, uint16_t *score, uint16_t *text_animation_timer) {
-    DISPLAY_OFF;
-    init_sound();
-    init_graphics(blobbo, basket, arrow, apple);
-    init_random();
-    init_new_game(text_animation_timer);
+void enter_gameplay_state(blobbo_t *blobbo, basket_t *basket, apple_t *apple, arrow_t *arrow, uint8_t *game_state, uint16_t *score) {
+    set_bkg_tiles(0, 0, NATURE_TILES_WIDTH, NATURE_TILES_HEIGHT, nature_tilemap);
+    reset_blobbo(blobbo);
+    reset_basket(basket, blobbo);
+    reset_apple(apple);
+    reset_arrow(arrow);
+    reset_score_display();
+    SHOW_SPRITES;
     *game_state = GAMEPLAY_STATE;
     *score = 0;
-    SHOW_SPRITES;
-    DISPLAY_ON;
+    reset_score_display();
     spawn_apple(apple);
+}
+
+void init_gameplay_state(uint16_t *text_animation_timer) {
+    DISPLAY_OFF;
+    SPRITES_8x8;
+    SHOW_SPRITES;
+    SHOW_BKG;
+    init_sound();
+    init_random();
+    set_bkg_data(0, NATURE_TILES_COUNT, nature_tileset);
+    init_gameplay_state_graphics(text_animation_timer);
+    DISPLAY_ON;
 }

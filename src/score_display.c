@@ -5,7 +5,7 @@
 #include "utils.h"
 #include "score_display.h"
 
-void init_score_display() {
+void init_score_display_graphics() {
 	set_bkg_data(0x63, SCORE_DISPLAY_TILESET_TILES_COUNT, score_display_tileset);
 }
 
