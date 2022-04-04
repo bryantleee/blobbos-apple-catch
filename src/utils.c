@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <stdbool.h>
 #include <gbdk/platform.h>
 #include <gbdk/console.h>

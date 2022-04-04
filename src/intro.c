@@ -22,7 +22,7 @@ void enter_intro_credits_state() {
 	printf("                    ");
 	printf("                    ");
 	printf("Copyright  2019-2022");
-	printf("       v2.0.0       ");
+	printf("       v2.0.1       ");
 
 	delay(3000);
 }
@@ -42,7 +42,7 @@ void update_title_screen(uint16_t *title_screen_animation_timer) {
 		set_bkg_tiles(START_TEXT_X, START_TEXT_Y, START_TEXT_TILEMAP_WIDTH, START_TEXT_TILEMAP_HEIGHT, start_text_tilemap);
 		*title_screen_animation_timer = ANIMATION_CYCLE_TIME;
 	}
-	else if(*title_screen_animation_timer == HALF_ANIMATION_CYCLE_TIME) {
+	else if (*title_screen_animation_timer == HALF_ANIMATION_CYCLE_TIME) {
 		set_bkg_tiles(PRESS_TEXT_X, PRESS_TEXT_Y, PRESS_TEXT_TILEMAP_WIDTH, PRESS_TEXT_TILEMAP_HEIGHT, blank_tiles_tilemap);
 		set_bkg_tiles(START_TEXT_X, START_TEXT_Y, START_TEXT_TILEMAP_WIDTH, START_TEXT_TILEMAP_HEIGHT, blank_tiles_tilemap);
 		(*title_screen_animation_timer) --;

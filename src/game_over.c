@@ -29,7 +29,7 @@ void update_game_over(uint16_t *game_over_animation_timer) {
         set_bkg_tiles(RETRY_TEXT_X, RETRY_TEXT_Y, RETRY_TEXT_TILEMAP_WIDTH, RETRY_TEXT_TILEMAP_HEIGHT, retry_text_tilemap); 
         *game_over_animation_timer = ANIMATION_CYCLE_TIME;
     }
-    else if(*game_over_animation_timer == HALF_ANIMATION_CYCLE_TIME) {
+    else if (*game_over_animation_timer == HALF_ANIMATION_CYCLE_TIME) {
         set_bkg_tiles(RETRY_TEXT_X, RETRY_TEXT_Y, RETRY_TEXT_TILEMAP_WIDTH, RETRY_TEXT_TILEMAP_HEIGHT, nature_tilemap); 
         (*game_over_animation_timer) --;
     }
