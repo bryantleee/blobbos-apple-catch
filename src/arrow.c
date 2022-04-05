@@ -12,6 +12,7 @@ void init_arrow_graphics() {
 }
 
 void reset_arrow(arrow_t *arrow) {
+    hide_arrow();
     arrow->spawn_timer = 150;
     arrow->is_active = FALSE;
     arrow->speed = ARROW_BASE_SPEED;
@@ -35,8 +36,7 @@ void spawn_arrow(arrow_t *arrow) {
         set_sprite_prop(ARROW_SPRITE_L, SPRITE_MIRROR_LEFT);
         set_sprite_prop(ARROW_SPRITE_R, SPRITE_MIRROR_LEFT);		
         arrow->x = RIGHT_WALL - 1;
-
-    }	
+    }
     set_arrow_sprite_location(arrow->x, arrow->y); // TODO change name to tile_locations or something better
 }
 

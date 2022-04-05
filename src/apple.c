@@ -11,6 +11,7 @@ void init_apple_graphics() {
 }
 
 void reset_apple(apple_t *apple) {
+    hide_apple();
     apple->speed = APPLE_BASE_SPEED;
 }
 
