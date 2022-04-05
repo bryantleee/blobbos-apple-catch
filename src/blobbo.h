@@ -15,6 +15,7 @@
 #define BLOBBO_STAND_SPEED 2
 #define BLOBBO_CROUCH_SPEED 1
 
+#define BLOBBO_DEFAULT_X ((DEVICE_SCREEN_PX_WIDTH + DEVICE_SPRITE_PX_OFFSET_X) / 2) - 4
 #define BLOBBO_DEFAULT_Y 121
 
 typedef struct {
@@ -40,5 +41,7 @@ void init_blobbo_graphics();
 void reset_blobbo(blobbo_t *blobbo);
 
 void update_blobbo_location(blobbo_t *blobbo, uint8_t j_input);
+
+void hide_blobbo();
 
 #endif

@@ -51,16 +51,18 @@ uint16_t get_random_number(uint16_t min, uint16_t max) {
 
 void enter_gameplay_state(blobbo_t *blobbo, basket_t *basket, apple_t *apple, arrow_t *arrow, uint8_t *game_state, uint16_t *score) {
     set_bkg_tiles(0, 0, NATURE_TILES_WIDTH, NATURE_TILES_HEIGHT, nature_tilemap);
+    play_start_button_noise();
     reset_blobbo(blobbo);
     reset_basket(basket, blobbo);
     reset_apple(apple);
     reset_arrow(arrow);
     reset_score_display();
-    SHOW_SPRITES;
     *game_state = GAMEPLAY_STATE;
     *score = 0;
     reset_score_display();
     spawn_apple(apple);
+    delay(10); // Add small delay to remove sprite ghosting effect when redrawing (consequence of GB hardware)
+    SHOW_SPRITES;
 }
 
 void init_gameplay_state(uint16_t *text_animation_timer) {
@@ -73,4 +75,18 @@ void init_gameplay_state(uint16_t *text_animation_timer) {
     set_bkg_data(0, NATURE_TILES_COUNT, nature_tileset);
     init_gameplay_state_graphics(text_animation_timer);
     DISPLAY_ON;
+}
+
+void play_start_button_noise() {
+    /* This sound is a bit buggy on the Analogue Pocket and will continuously play noise
+        unless interrupted by another sound. Therefore, we just won't play this sound on the Analogue Pocket
+        until we find a solution.
+    */
+    #if defined(__TARGET_gb) 
+    NR10_REG = 0x23;
+    NR11_REG = 0xBA;
+    NR12_REG = 0x6B;
+    NR13_REG = 0x0A;
+    NR14_REG = 0x85;
+    #endif
 }

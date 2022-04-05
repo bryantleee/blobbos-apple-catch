@@ -10,6 +10,4 @@ void enter_pause_state(uint8_t *game_state);
 
 void exit_pause_state(uint8_t *game_state);
 
-void play_pause_button_noise();
-
 #endif
