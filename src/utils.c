@@ -30,9 +30,9 @@ void init_gameplay_state_graphics(uint16_t *text_animation_timer) {
 }
 
 void init_sound() {
-    NR52_REG = 0x8F; // turn on the sound
-    NR51_REG = 0x11; // enable the sound channels
+    NR52_REG = 0x80; // turn on the sound
     NR50_REG = 0x77; // increase the volume to its max
+    NR51_REG = 0x11; // enable the sound channels
 }
 
 void init_random() {
@@ -85,8 +85,14 @@ void play_start_button_noise() {
     #if defined(__TARGET_gb) 
     NR10_REG = 0x23;
     NR11_REG = 0xBA;
-    NR12_REG = 0x6B;
+    NR12_REG = 0xF0; // max volume
     NR13_REG = 0x0A;
     NR14_REG = 0x85;
+
+    // NR10_REG = 0x1E;
+    // NR11_REG = 0x10;
+    // NR12_REG = 0xF3;
+    // NR13_REG = 0x00;
+    // NR14_REG = 0x87;
     #endif
 }
