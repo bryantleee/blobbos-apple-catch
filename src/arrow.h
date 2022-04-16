@@ -11,6 +11,8 @@
 
 #define MIN_ARROW_SPAWN_TIME 180 
 #define MAX_ARROW_SPAWN_TIME 540
+#define MIN_SHOW_WARNING_THRESHOLD_TIME 35 
+#define MAX_SHOW_WARNING_THRESHOLD_TIME 60
 #define MIN_SCORE_FOR_ARROW_TO_SPAWN 10
 #define MIN_SCORE_FOR_ARROW_TO_ACCELERATE 50
 
@@ -22,12 +24,12 @@
 typedef struct {
     uint16_t x, y, spawn_timer;
     bool is_moving_right, is_active;
-    uint8_t speed;
+    uint8_t speed, show_warning_threshold;
 } arrow_t;
 
 void init_arrow_graphics();
 
-void spawn_arrow(arrow_t *arrow);
+void spawn_arrow(arrow_t *arrow, uint16_t *score);
 
 void set_arrow_sprite_location(uint16_t x, uint16_t y);
 
@@ -38,5 +40,7 @@ void hide_arrow();
 void set_arrow_spawn_time(arrow_t *arrow);
 
 void reset_arrow(arrow_t *arrow);
+
+void set_show_warning_threshold(arrow_t *arrow);
 
 #endif

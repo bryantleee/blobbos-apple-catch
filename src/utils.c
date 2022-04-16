@@ -8,6 +8,7 @@
 #include "arrow.h"
 #include "apple.h"
 #include "score_display.h"
+#include "warning.h"
 #include "intro.h"
 #include "pause.h"
 #include "game_over.h"
@@ -25,6 +26,7 @@ void init_gameplay_state_graphics(uint16_t *text_animation_timer) {
     init_apple_graphics();
     init_arrow_graphics();
     init_score_display_graphics();
+    init_warning_graphics();
     init_pause_state();
     init_game_over_state(text_animation_timer);
 }
@@ -57,6 +59,7 @@ void enter_gameplay_state(blobbo_t *blobbo, basket_t *basket, apple_t *apple, ar
     reset_apple(apple);
     reset_arrow(arrow);
     reset_score_display();
+    reset_warning();
     *game_state = GAMEPLAY_STATE;
     *score = 0;
     reset_score_display();
