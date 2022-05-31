@@ -24,8 +24,8 @@ void spawn_apple(apple_t * apple) {
 }
 
 void set_apple_sprite_location(uint16_t x, uint16_t y) {
-    uint16_t x1 = x + 8;
-    uint16_t y1 = y + 8;
+    const uint16_t x1 = x + 8;
+    const uint16_t y1 = y + 8;
 
     move_sprite(APPLE_TL, x, y);
     move_sprite(APPLE_TR, x1, y);

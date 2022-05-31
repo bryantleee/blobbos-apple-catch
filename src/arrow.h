@@ -18,8 +18,6 @@
 
 #define ARROW_DEFAULT_Y 110
 #define ARROW_BASE_SPEED 2
-#define SPRITE_MIRROR_RIGHT S_FLIPX
-#define SPRITE_MIRROR_LEFT 0
 
 typedef struct {
     uint16_t x, y, spawn_timer;
