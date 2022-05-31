@@ -40,7 +40,7 @@ void update_apple_location(apple_t *apple, basket_t *basket, uint16_t *score, ui
     }
     if (apple->drop_timer == 0) {
         apple->y += apple->speed;
-        bool apple_caught = is_colliding(apple->x, apple->y, APPLE_WIDTH, APPLE_HEIGHT, basket->x, basket->y, BASKET_WIDTH, BASKET_HEIGHT);
+        const bool apple_caught = is_colliding(apple->x, apple->y, APPLE_WIDTH, APPLE_HEIGHT, basket->x, basket->y, BASKET_WIDTH, BASKET_HEIGHT);
 
         if (apple->y > BOTTOM_WALL || apple_caught) {
             apple->y --;
