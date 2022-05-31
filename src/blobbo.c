@@ -77,8 +77,11 @@ void reset_blobbo(blobbo_t *blobbo) {
     blobbo->y = BLOBBO_DEFAULT_Y;
     blobbo->state = STANDING_STATE;
     blobbo->state_timer = 0;
+    blobbo->dash_recharge_timer = DASH_RECHARGE_TIMER_LENGTH;
     blobbo->speed = BLOBBO_STAND_SPEED;
     blobbo->is_moving_down = FALSE;
+    blobbo->previous_j_input = 0;
+    blobbo->j_b_let_go = TRUE;
     set_blobbo_sprite_location(blobbo->x, blobbo->y);
 }
 
@@ -88,7 +91,7 @@ void update_blobbo_location(blobbo_t *blobbo, uint8_t j_input) {
         if (blobbo->state == STANDING_STATE) {
             set_blobbo_half_crouching();
             blobbo->state = HALF_CROUCH_STATE;
-            blobbo->state_timer = 2;
+            blobbo->state_timer = HALF_CROUCH_STATE_TIMER_LENGTH;
             blobbo->is_moving_down = TRUE;
         }
         else if (blobbo->state == HALF_CROUCH_STATE) {
@@ -106,6 +109,15 @@ void update_blobbo_location(blobbo_t *blobbo, uint8_t j_input) {
             else {
                 blobbo->state_timer --;
             }
+        }
+    }
+    else if ((j_input & J_B) && ((j_input & J_RIGHT) || (j_input & J_LEFT)) && blobbo->j_b_let_go) {
+        if (blobbo->state == STANDING_STATE && blobbo->dash_recharge_timer == 0) {
+            blobbo->state = DASH_STATE;
+            blobbo->state_timer = DASH_STATE_TIMER_LENGTH;
+            blobbo->speed = BLOBBO_DASH_SPEED;
+            blobbo->previous_j_input = j_input;
+            blobbo->j_b_let_go = FALSE;
         }
     }
     else {
@@ -126,9 +138,31 @@ void update_blobbo_location(blobbo_t *blobbo, uint8_t j_input) {
         else if (blobbo->state == FULL_CROUCH_STATE) {
             set_blobbo_half_crouching();
             blobbo->state = HALF_CROUCH_STATE;
-            blobbo->state_timer = 2;
+            blobbo->state_timer = HALF_CROUCH_STATE_TIMER_LENGTH;
         }
     }
+
+    if (blobbo->state == DASH_STATE) {
+        if (blobbo->state_timer == 0) {
+            blobbo->state = STANDING_STATE;
+            blobbo->speed = BLOBBO_STAND_SPEED;
+            blobbo->dash_recharge_timer = DASH_RECHARGE_TIMER_LENGTH;
+        }
+        else {
+            j_input = blobbo->previous_j_input;
+            blobbo->state_timer --;
+        }
+    }
+    else {
+        if (blobbo->dash_recharge_timer != 0) {
+            blobbo->dash_recharge_timer --;
+        }
+    }
+    if (!(j_input & J_B)) {
+        blobbo->j_b_let_go = TRUE;
+    }
+
+    // Handle directional input
     if (j_input & J_RIGHT && blobbo->x < RIGHT_WALL) {
         blobbo->x += blobbo->speed;
         if (blobbo->state == STANDING_STATE) {

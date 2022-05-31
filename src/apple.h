@@ -14,12 +14,14 @@
 #define APPLE_MIN_SPAWN_Y DEVICE_SPRITE_PX_OFFSET_Y
 #define APPLE_MAX_SPAWN_Y 50
 
-#define APPLE_DANGLE_TIME 24
+#define APPLE_BASE_DANGLE_TIME 22
+#define APPLE_FAST_DANGLE_TIME 14
 #define APPLE_BASE_SPEED 2
+#define MIN_SCORE_FOR_APPLE_TO_DANGLE_LESS 30
 
 typedef struct {
     uint16_t x, y, drop_timer;
-    uint8_t speed;
+    uint8_t speed, dangle_time;
 } apple_t;
 
 void init_apple_graphics();

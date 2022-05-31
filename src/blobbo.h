@@ -6,6 +6,7 @@
 #define STANDING_STATE 0
 #define HALF_CROUCH_STATE 1
 #define FULL_CROUCH_STATE 2
+#define DASH_STATE 3
 
 #define BLOBBO_SPRITE_TL 0
 #define BLOBBO_SPRITE_TR 1
@@ -14,14 +15,20 @@
 
 #define BLOBBO_STAND_SPEED 2
 #define BLOBBO_CROUCH_SPEED 1
+#define BLOBBO_DASH_SPEED 5
 
 #define BLOBBO_DEFAULT_X ((DEVICE_SCREEN_PX_WIDTH + DEVICE_SPRITE_PX_OFFSET_X) / 2) - 4
 #define BLOBBO_DEFAULT_Y 121
 
+#define HALF_CROUCH_STATE_TIMER_LENGTH 2
+#define DASH_STATE_TIMER_LENGTH 5
+
+#define DASH_RECHARGE_TIMER_LENGTH 20
+
 typedef struct {
     uint16_t x, y;
-    uint8_t state, state_timer, speed;
-    bool is_moving_down;
+    uint8_t state, state_timer, dash_recharge_timer, speed, previous_j_input;
+    bool is_moving_down, j_b_let_go; // We don't users constantly holding down B to contunously dash once recharge is done
 } blobbo_t;
 
 void set_blobbo_sprite_location(uint16_t x, uint16_t y);

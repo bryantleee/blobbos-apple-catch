@@ -8,6 +8,8 @@
 #include "arrow.h"
 #include "apple.h"
 #include "score_display.h"
+#include "warning.h"
+#include "spider.h"
 #include "intro.h"
 #include "pause.h"
 #include "game_over.h"
@@ -18,6 +20,7 @@
 const uint16_t LEFT_WALL = DEVICE_SPRITE_PX_OFFSET_X;
 const uint16_t RIGHT_WALL = DEVICE_SCREEN_PX_WIDTH + DEVICE_SPRITE_PX_OFFSET_X - 16;
 const uint16_t BOTTOM_WALL = DEVICE_SCREEN_PX_HEIGHT;
+const uint16_t TOP_WALL = 0;
 
 void init_gameplay_state_graphics(uint16_t *text_animation_timer) {
     init_blobbo_graphics();
@@ -25,6 +28,8 @@ void init_gameplay_state_graphics(uint16_t *text_animation_timer) {
     init_apple_graphics();
     init_arrow_graphics();
     init_score_display_graphics();
+    init_warning_graphics();
+    init_spider_graphics();
     init_pause_state();
     init_game_over_state(text_animation_timer);
 }
@@ -49,14 +54,16 @@ uint16_t get_random_number(uint16_t min, uint16_t max) {
     return rand() % (max + 1 - min) + min;
 }
 
-void enter_gameplay_state(blobbo_t *blobbo, basket_t *basket, apple_t *apple, arrow_t *arrow, uint8_t *game_state, uint16_t *score) {
+void enter_gameplay_state(blobbo_t *blobbo, basket_t *basket, apple_t *apple, arrow_t *arrow, spider_t *spider, uint8_t *game_state, uint16_t *score) {
     set_bkg_tiles(0, 0, NATURE_TILES_WIDTH, NATURE_TILES_HEIGHT, nature_tilemap);
     play_start_button_noise();
     reset_blobbo(blobbo);
     reset_basket(basket, blobbo);
     reset_apple(apple);
     reset_arrow(arrow);
+    reset_spider(spider);
     reset_score_display();
+    reset_warning();
     *game_state = GAMEPLAY_STATE;
     *score = 0;
     reset_score_display();

@@ -13,10 +13,11 @@ void init_apple_graphics() {
 void reset_apple(apple_t *apple) {
     hide_apple();
     apple->speed = APPLE_BASE_SPEED;
+    apple->dangle_time = APPLE_BASE_DANGLE_TIME;
 }
 
 void spawn_apple(apple_t * apple) {
-    apple->drop_timer = APPLE_DANGLE_TIME;
+    apple->drop_timer = apple->dangle_time;
     apple->x = get_random_number(LEFT_WALL, RIGHT_WALL);
     apple->y = get_random_number(APPLE_MIN_SPAWN_Y, APPLE_MAX_SPAWN_Y);
     set_apple_sprite_location(apple->x, apple->y);
@@ -24,8 +25,8 @@ void spawn_apple(apple_t * apple) {
 }
 
 void set_apple_sprite_location(uint16_t x, uint16_t y) {
-    uint16_t x1 = x + 8;
-    uint16_t y1 = y + 8;
+    const uint16_t x1 = x + 8;
+    const uint16_t y1 = y + 8;
 
     move_sprite(APPLE_TL, x, y);
     move_sprite(APPLE_TR, x1, y);
@@ -34,6 +35,9 @@ void set_apple_sprite_location(uint16_t x, uint16_t y) {
 }
 
 void update_apple_location(apple_t *apple, basket_t *basket, uint16_t *score, uint8_t *game_state) {
+    if (*score == MIN_SCORE_FOR_APPLE_TO_DANGLE_LESS) {
+        apple->dangle_time = APPLE_FAST_DANGLE_TIME;
+    }
     if (apple->drop_timer == 0) {
         apple->y += apple->speed;
         bool apple_caught = is_colliding(apple->x, apple->y, APPLE_WIDTH, APPLE_HEIGHT, basket->x, basket->y, BASKET_WIDTH, BASKET_HEIGHT);

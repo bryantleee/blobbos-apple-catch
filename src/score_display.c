@@ -9,10 +9,9 @@ void init_score_display_graphics() {
 }
 
 void reset_score_display() {
-    for (int i = 0; i < 5; i ++) {
+    for (uint8_t i = 0; i < 5; i ++) {
         score_display_tilemap[i] = 0x63;
     }
-
     set_bkg_tiles(SCORE_DISPLAY_X, SCORE_DISPLAY_Y, SCORE_DISPLAY_TILEMAP_WIDTH, SCORE_DISPLAY_TILEMAP_HEIGHT, score_display_tilemap);
 }
 
