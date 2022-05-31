@@ -20,6 +20,8 @@ void reset_spider(spider_t *spider) {
 }
 
 void reset_spider_legs_props() {
+    // The spider is generated from three unique tiles
+    //  and put together through horizontal and vertical reflection transformations
     set_sprite_prop(SPIDER_BODY_R, S_DEFAULT);
     set_sprite_prop(SPIDER_BODY_L, S_DEFAULT);
     set_sprite_prop(SPIDER_LEG_L, S_DEFAULT);
@@ -29,6 +31,7 @@ void reset_spider_legs_props() {
 }
 
 void set_spider_location(spider_t *spider) {
+    // The spider's legs will be in different areas, depending on the spider's state
     move_sprite(SPIDER_LEG_L, spider->x - 8, spider->y);
     move_sprite(SPIDER_BODY_L, spider->x, spider->y);
     move_sprite(SPIDER_BODY_R, spider->x + 8, spider->y);

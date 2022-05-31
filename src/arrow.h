@@ -18,6 +18,7 @@
 
 #define ARROW_DEFAULT_Y 110
 #define ARROW_BASE_SPEED 2
+#define ARROW_FAST_SPEED 3
 
 typedef struct {
     uint16_t x, y, spawn_timer;

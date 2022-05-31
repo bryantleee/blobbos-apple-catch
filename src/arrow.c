@@ -25,8 +25,8 @@ void spawn_arrow(arrow_t *arrow, uint16_t *score) {
     arrow->is_active = TRUE;
     set_show_warning_threshold(arrow);
 
-    if (*score == MIN_SCORE_FOR_ARROW_TO_ACCELERATE) {
-        arrow->speed = ARROW_BASE_SPEED + 1;
+    if (*score > MIN_SCORE_FOR_ARROW_TO_ACCELERATE) {
+        arrow->speed = ARROW_FAST_SPEED;
     }
     
     if (arrow->is_moving_right) {
@@ -78,7 +78,7 @@ void update_arrow_location(arrow_t *arrow, basket_t *basket, uint16_t *score, ui
 }
 
 void set_arrow_sprite_location(uint16_t x, uint16_t y) {
-    uint16_t x1 = x + 8;
+    const uint16_t x1 = x + 8;
     move_sprite(ARROW_SPRITE_L, x, y);
     move_sprite(ARROW_SPRITE_R, x1, y);
 }

@@ -25,11 +25,14 @@ void enter_game_over_state(uint8_t *game_state) {
 }
 
 void update_game_over(uint16_t *game_over_animation_timer) {
+    // Animate the blinking "Press Start to Retry" text
     if (*game_over_animation_timer == 0) {
+        // Show the text
         set_bkg_tiles(RETRY_TEXT_X, RETRY_TEXT_Y, RETRY_TEXT_TILEMAP_WIDTH, RETRY_TEXT_TILEMAP_HEIGHT, retry_text_tilemap); 
         *game_over_animation_timer = ANIMATION_CYCLE_TIME;
     }
     else if (*game_over_animation_timer == HALF_ANIMATION_CYCLE_TIME) {
+        // Hide the text, replace it with the appropriate background tiles
         set_bkg_tiles(RETRY_TEXT_X, RETRY_TEXT_Y, RETRY_TEXT_TILEMAP_WIDTH, RETRY_TEXT_TILEMAP_HEIGHT, nature_tilemap); 
         (*game_over_animation_timer) --;
     }
