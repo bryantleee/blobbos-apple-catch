@@ -1,6 +1,6 @@
 # Blobbo's Apple Catch
 
-Blobbo's Apple Catch is an original, homebrew Game Boy game recently entirely re-written from scratch with [GBDK 2020](https://github.com/gbdk-2020). 
+Blobbo's Apple Catch is an original homebrew Game Boy created with [GBDK 2020](https://github.com/gbdk-2020). 
 
 Download the latest ROM [here](https://github.com/bryantleee/blobbos-apple-catch/releases).
 
