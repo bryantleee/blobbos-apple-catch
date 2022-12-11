@@ -13,11 +13,13 @@ void init_game_over_state(uint16_t *game_over_animation_timer) {
 }
 
 void enter_game_over_state(uint8_t *game_state) {
+    #if defined(__TARGET_gb)
     NR10_REG = 0x15;
     NR11_REG = 0x9B;
     NR12_REG = 0x73;
     NR13_REG = 0x01;
     NR14_REG = 0x90;
+    #endif
     *game_state = GAME_OVER_STATE;
     HIDE_SPRITES;
     set_bkg_tiles(GAME_OVER_X, GAME_OVER_Y, GAME_OVER_TEXT_TILEMAP_WIDTH, GAME_OVER_TEXT_TILEMAP_HEIGHT, game_over_text_tilemap);

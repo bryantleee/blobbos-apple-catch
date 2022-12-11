@@ -35,15 +35,19 @@ void init_gameplay_state_graphics(uint16_t *text_animation_timer) {
 }
 
 void init_sound() {
+    #if defined(__TARGET_gb)
     NR52_REG = 0x8F; // turn on the sound
     NR51_REG = 0x11; // enable the sound channels
     NR50_REG = 0x77; // increase the volume to its max
+    #endif
 }
 
 void init_random() {
+    #if defined(__TARGET_gb)
     uint16_t seed = DIV_REG;
     seed |= (uint16_t)DIV_REG << 8;
     initrand(seed);
+    #endif
 }
 
 bool is_colliding(uint8_t x1, uint8_t y1, uint8_t w1, uint8_t h1, uint8_t x2, uint8_t y2, uint8_t w2, uint8_t h2) {
@@ -89,7 +93,7 @@ void play_start_button_noise() {
         unless interrupted by another sound. Therefore, we just won't play this sound on the Analogue Pocket
         until we find a solution.
     */
-    #if defined(__TARGET_gb) 
+    #if defined(__TARGET_gb)
     NR10_REG = 0x23;
     NR11_REG = 0xBA;
     NR12_REG = 0x6B;
