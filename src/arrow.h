@@ -3,6 +3,7 @@
 
 #include <stdbool.h>
 #include "basket.h"
+#include "blobbo.h"
 
 #define ARROW_SPRITE_L 6
 #define ARROW_SPRITE_R 7
@@ -16,7 +17,7 @@
 #define MIN_SCORE_FOR_ARROW_TO_SPAWN 5
 #define MIN_SCORE_FOR_ARROW_TO_ACCELERATE 50
 
-#define ARROW_DEFAULT_Y 110
+#define ARROW_DEFAULT_Y BLOBBO_DEFAULT_Y - 11
 #define ARROW_BASE_SPEED 2
 #define ARROW_FAST_SPEED 3
 
