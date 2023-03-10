@@ -10,6 +10,8 @@
 #include "pause.h"
 #include "game_over.h"
 #include "spider.h"
+#include "sgb_border.h"
+#include "../res/sgb_border_tiles.h"
 
 blobbo_t blobbo;
 basket_t basket;
@@ -29,6 +31,7 @@ uint16_t text_animation_timer;
 bool start_pressed_last_frame;
 
 void main(void) {
+    set_sgb_border(border_data_tiles, sizeof(border_data_tiles), border_data_map, sizeof(border_data_map), border_data_palettes, sizeof(border_data_palettes));
     enter_intro_credits_state();
 
     init_title_screen(&game_state, &text_animation_timer);

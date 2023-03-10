@@ -9,7 +9,7 @@ Download this repository and [GBDK 2020](https://github.com/gbdk-2020). Add this
 ```
 make
 ```
-Compilation last verified with GBDK 4.0.6.
+Compilation last verified with GBDK 4.1.1.
 
 ## Credits
 * Graphics and code developed by Bryant Lee
