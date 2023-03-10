@@ -1,7 +1,5 @@
 #include "sgb_border.h"
-
 #include <gb/gb.h>
-#include <stdint.h>
 #include <gb/sgb.h>
 #include <string.h>
 
@@ -18,13 +16,17 @@ void set_sgb_border(unsigned char * tiledata, size_t tiledata_size,
                     unsigned char * tilemap, size_t tilemap_size,
                     unsigned char * palette, size_t palette_size) {
     if (sgb_check()) {
+        // Wait 4 frames for PAL SNES
+        for (uint8_t i = 0; i < 4; i++) {
+            wait_vbl_done();
+        }
+
         unsigned char map_buf[20];
         memset(map_buf, 0, sizeof(map_buf));
 
         SGB_TRANSFER((SGB_MASK_EN << 3) | 1, SGB_SCR_FREEZE); 
 
         BGP_REG = OBP0_REG = OBP1_REG = 0xE4U;
-        SCX_REG = SCY_REG = 0U;
 
         uint8_t tmp_lcdc = LCDC_REG;
 
@@ -32,10 +34,10 @@ void set_sgb_border(unsigned char * tiledata, size_t tiledata_size,
         DISPLAY_ON;
         // prepare tilemap for SGB_BORDER_CHR_TRN (should display all 256 tiles)
         uint8_t i = 0U;
-        for (uint8_t y = 0; y != 14U; ++y) {
-            uint8_t * dout = map_buf;
-            for (uint8_t x = 0U; x != 20U; ++ x) {
-                *dout ++ = i ++;
+        for (uint8_t y = 0; y < 14U; y++) {
+            uint8_t *dout = map_buf;
+            for (uint8_t x = 0U; x < 20U; x++) {
+                *dout++ = i++;
             }
             set_bkg_tiles(0, y, 20, 1, map_buf);
         }
@@ -46,7 +48,9 @@ void set_sgb_border(unsigned char * tiledata, size_t tiledata_size,
         if ((!ntiles) || (ntiles > 128U)) { 
             set_bkg_data(0, 0, tiledata); 
             SGB_TRANSFER((SGB_CHR_TRN << 3) | 1, SGB_CHR_BLOCK0);
-            if (ntiles) ntiles -= 128U; 
+            if (ntiles) {
+                ntiles -= 128U;    
+            }
             tiledata += (128 * 32);
             set_bkg_data(0, ntiles << 1, tiledata); 
             SGB_TRANSFER((SGB_CHR_TRN << 3) | 1, SGB_CHR_BLOCK1);

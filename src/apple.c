@@ -48,7 +48,7 @@ void update_apple_location(apple_t *apple, basket_t *basket, uint16_t *score, ui
 
             if (apple_caught) {
                 play_apple_caught_sound();
-                (*score) ++;
+                (*score)++;
                 increment_score_display();
                 spawn_apple(apple);
             }
