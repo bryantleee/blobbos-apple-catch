@@ -28,7 +28,7 @@ void set_sgb_border(unsigned char * tiledata, size_t tiledata_size,
 
         BGP_REG = OBP0_REG = OBP1_REG = 0xE4U;
 
-        uint8_t tmp_lcdc = LCDC_REG;
+        const uint8_t tmp_lcdc = LCDC_REG;
 
         HIDE_SPRITES, HIDE_WIN, SHOW_BKG;
         DISPLAY_ON;

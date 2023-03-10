@@ -13,8 +13,8 @@
 **/
 
 void set_blobbo_sprite_location(uint16_t x, uint16_t y) {
-    uint16_t x1 = x + 8;
-    uint16_t y1 = y + 8;
+    const uint16_t x1 = x + 8;
+    const uint16_t y1 = y + 8;
 
     move_sprite(BLOBBO_SPRITE_TL, x, y);
     move_sprite(BLOBBO_SPRITE_TR, x1, y);
