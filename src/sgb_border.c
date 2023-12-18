@@ -13,7 +13,6 @@
 
 #define SGB_TRANSFER(A,B) map_buf[0]=(A), map_buf[1]=(B), sgb_transfer(map_buf) 
 
-
 void set_sgb_border() {
     if (sgb_check()) {
         const unsigned char *tiledata = border_data_tiles;
@@ -38,8 +37,7 @@ void set_sgb_border() {
 
         const uint8_t tmp_lcdc = LCDC_REG;
 
-        HIDE_SPRITES, HIDE_WIN, SHOW_BKG;
-        DISPLAY_ON;
+        SHOW_BKG;
 
         // Prepare tilemap for SGB_BORDER_CHR_TRN (should display all 256 tiles)
         uint8_t i = 0U;
