@@ -21,7 +21,7 @@ void enter_intro_credits_state() {
 	printf("                    ");
 	printf("                    ");
 	printf("                    ");
-	printf("Copyright  2019-2023");
+	printf("Copyright  2019-2024");
 	printf("       v2.2.0       ");
 
 	delay(3000);
