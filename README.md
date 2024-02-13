@@ -12,5 +12,5 @@ make
 Compilation last verified with GBDK 4.1.1.
 
 ## Credits
-* Graphics and code developed by Bryant Lee
-* [Physical release](https://drive.google.com/file/d/1SuSRxeb4GMKE__AFbagq8SFiUG_N7MgH/view) sticker artwork done by [Carolyne Tan](https://carolynetan.squarespace.com/)
+* Game Boy Graphics and code developed by Bryant Lee
+* [Physical release](https://drive.google.com/file/d/1SuSRxeb4GMKE__AFbagq8SFiUG_N7MgH/view) sticker artwork and Super Game Boy Border graphics created by [Carolyne Tan](https://carolynetan.squarespace.com/)
