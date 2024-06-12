@@ -9,7 +9,7 @@ Download this repository and [GBDK 2020](https://github.com/gbdk-2020). Add this
 ```
 make
 ```
-Compilation last verified with GBDK 4.1.1.
+Compilation last verified with GBDK2020 v4.3.0.
 
 ## Credits
 * Game Boy Graphics and code developed by Bryant Lee
