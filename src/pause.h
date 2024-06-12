@@ -4,7 +4,7 @@
 #define PAUSE_TEXT_X 0
 #define PAUSE_TEXT_Y 17
 
-void init_pause_state();
+void init_pause_state(void);
 
 void enter_pause_state(uint8_t *game_state);
 

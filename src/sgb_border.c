@@ -13,7 +13,7 @@
 
 #define SGB_TRANSFER(A,B) map_buf[0]=(A), map_buf[1]=(B), sgb_transfer(map_buf) 
 
-void set_sgb_border() {
+void set_sgb_border(void) {
     if (sgb_check()) {
         const unsigned char *tiledata = border_data_tiles;
         const size_t tiledata_size = sizeof(border_data_tiles);

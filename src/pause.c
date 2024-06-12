@@ -5,7 +5,7 @@
 #include "../res/pause_text_tiles.h"
 #include "../res/blank_tiles.h"
 
-void init_pause_state() {
+void init_pause_state(void) {
     set_bkg_data(0x6D, PAUSE_TEXT_TILESET_COUNT, pause_text_tileset);
 }
 

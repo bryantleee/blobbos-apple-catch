@@ -4,11 +4,11 @@
 #define SCORE_DISPLAY_X 15
 #define SCORE_DISPLAY_Y 17
 
-void init_score_display_graphics();
+void init_score_display_graphics(void);
 
-void reset_score_display();
+void reset_score_display(void);
 
 // Better to only include an increment operation since modulo is so costly
-void increment_score_display();
+void increment_score_display(void);
 
 #endif

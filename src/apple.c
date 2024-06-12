@@ -6,7 +6,7 @@
 #include "game_over.h"
 #include "../res/apple_sprite.h"
 
-void init_apple_graphics() {
+void init_apple_graphics(void) {
     set_sprite_data(21, 4, apple_sprite);
 }
 
@@ -65,22 +65,24 @@ void update_apple_location(apple_t *apple, basket_t *basket, uint16_t *score, ui
     }
 }
 
-void play_apple_caught_sound() {
+void play_apple_caught_sound(void) {
+    #if defined(__TARGET_gb)
     NR10_REG = 0x15;
     NR11_REG = 0x9B;
     NR12_REG = 0x73;
     NR13_REG = 0x01;
     NR14_REG = 0x85;
+    #endif
 }
 
-void show_apple() {
+void show_apple(void) {
     set_sprite_tile(APPLE_TL, 21);
     set_sprite_tile(APPLE_BL, 22);
     set_sprite_tile(APPLE_TR, 23);
     set_sprite_tile(APPLE_BR, 24);
 }
 
-void hide_apple() {
+void hide_apple(void) {
     set_sprite_tile(APPLE_TL, 18);
     set_sprite_tile(APPLE_TR, 18);
     set_sprite_tile(APPLE_BL, 18);

@@ -33,22 +33,22 @@ typedef struct {
 
 void set_blobbo_sprite_location(uint16_t x, uint16_t y);
 
-void set_blobbo_left();
+void set_blobbo_left(void);
 
-void set_blobbo_right();
+void set_blobbo_right(void);
 
-void set_blobbo_forward();
+void set_blobbo_forward(void);
 
-void set_blobbo_crouching();
+void set_blobbo_crouching(void);
 
-void set_blobbo_half_crouching();
+void set_blobbo_half_crouching(void);
 
-void init_blobbo_graphics();
+void init_blobbo_graphics(void);
 
 void reset_blobbo(blobbo_t *blobbo);
 
 void update_blobbo_location(blobbo_t *blobbo, uint8_t j_input);
 
-void hide_blobbo();
+void hide_blobbo(void);
 
 #endif

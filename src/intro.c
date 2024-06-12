@@ -5,7 +5,7 @@
 #include "../res/title_screen_tiles.h"
 #include "../res/blank_tiles.h"
 
-void enter_intro_credits_state() {
+void enter_intro_credits_state(void) {
 	printf("                    ");
 	printf("                    ");
 	printf("                    ");

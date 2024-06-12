@@ -8,7 +8,7 @@
 #include "game_over.h"
 #include "../res/arrow_sprite.h"
 
-void init_arrow_graphics() {
+void init_arrow_graphics(void) {
     set_sprite_data(25, 4, arrow_sprite);
 }
 
@@ -83,7 +83,7 @@ void set_arrow_sprite_location(uint16_t x, uint16_t y) {
     move_sprite(ARROW_SPRITE_R, x1, y);
 }
 
-void hide_arrow() {
+void hide_arrow(void) {
     set_sprite_tile(ARROW_SPRITE_L, 18);
     set_sprite_tile(ARROW_SPRITE_R, 18);
 } 

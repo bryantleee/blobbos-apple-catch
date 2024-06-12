@@ -22,49 +22,49 @@ void set_blobbo_sprite_location(uint16_t x, uint16_t y) {
     move_sprite(BLOBBO_SPRITE_BR, x1, y1);
 }
 
-void set_blobbo_left() {
+void set_blobbo_left(void) {
     set_sprite_tile(BLOBBO_SPRITE_TL, 4);
     set_sprite_tile(BLOBBO_SPRITE_TR, 6);
     set_sprite_tile(BLOBBO_SPRITE_BL, 5);
     set_sprite_tile(BLOBBO_SPRITE_BR, 7);
 }
 
-void set_blobbo_right() {
+void set_blobbo_right(void) {
     set_sprite_tile(BLOBBO_SPRITE_TL, 0);
     set_sprite_tile(BLOBBO_SPRITE_TR, 2);
     set_sprite_tile(BLOBBO_SPRITE_BL, 1);
     set_sprite_tile(BLOBBO_SPRITE_BR, 3);
 }
 
-void set_blobbo_forward() {
+void set_blobbo_forward(void) {
     set_sprite_tile(BLOBBO_SPRITE_TL, 8);
     set_sprite_tile(BLOBBO_SPRITE_TR, 10);
     set_sprite_tile(BLOBBO_SPRITE_BL, 9);
     set_sprite_tile(BLOBBO_SPRITE_BR, 11);
 }
 
-void set_blobbo_crouching() {
+void set_blobbo_crouching(void) {
     set_sprite_tile(BLOBBO_SPRITE_TL, 18);
     set_sprite_tile(BLOBBO_SPRITE_TR, 18);
     set_sprite_tile(BLOBBO_SPRITE_BL, 16);
     set_sprite_tile(BLOBBO_SPRITE_BR, 17);
 }
 
-void set_blobbo_half_crouching() {
+void set_blobbo_half_crouching(void) {
     set_sprite_tile(BLOBBO_SPRITE_TL, 12);
     set_sprite_tile(BLOBBO_SPRITE_TR, 14);
     set_sprite_tile(BLOBBO_SPRITE_BL, 13);
     set_sprite_tile(BLOBBO_SPRITE_BR, 15);
 }
 
-void hide_blobbo() {
+void hide_blobbo(void) {
     set_sprite_tile(BLOBBO_SPRITE_TL, 18);
     set_sprite_tile(BLOBBO_SPRITE_TR, 18);
     set_sprite_tile(BLOBBO_SPRITE_BL, 18);
     set_sprite_tile(BLOBBO_SPRITE_BR, 18);
 }
 
-void init_blobbo_graphics() {
+void init_blobbo_graphics(void) {
     // Load the Blobbo tiles into VRAM
     set_sprite_data(0, 19, blobbo_sprite);
 }

@@ -26,11 +26,11 @@ void init_gameplay_state_graphics(uint16_t *text_animation_timer);
 
 void init_gameplay_state(uint16_t *text_animation_timer);
 
-void init_random();
+void init_random(void);
 
-void reset_game();
+void reset_game(void);
 
-void init_sound();
+void init_sound(void);
 
 // Simple retangular collision check
 bool is_colliding(uint8_t x1, uint8_t y1, uint8_t w1, uint8_t h1, uint8_t x2, uint8_t y2, uint8_t w2, uint8_t h2);
@@ -40,6 +40,6 @@ uint16_t get_random_number(uint16_t min, uint16_t max);
 
 void enter_gameplay_state(blobbo_t *blobbo, basket_t *basket, apple_t *apple, arrow_t *arrow, spider_t *spider, uint8_t *game_state, uint16_t *score);
 
-void play_start_button_noise();
+void play_start_button_noise(void);
 
 #endif

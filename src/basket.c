@@ -23,7 +23,7 @@ void update_basket_location(basket_t *basket, blobbo_t *blobbo) {
     set_basket_sprite_location(basket->x, basket->y);
 }
 
-void init_basket_graphics() {
+void init_basket_graphics(void) {
     set_sprite_data(19, 2, basket_sprite);
     set_sprite_tile(BASKET_SPRITE_L, 19);
     set_sprite_tile(BASKET_SPRITE_R, 20);

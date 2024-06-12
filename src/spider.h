@@ -40,32 +40,32 @@ typedef struct {
     uint8_t gameplay_state, graphics_state;
 } spider_t;
 
-void init_spider_graphics();
+void init_spider_graphics(void);
 
 void reset_spider(spider_t *spider);
 
 void set_spider_location(spider_t *spider);
 
-void hide_spider();
+void hide_spider(void);
 
-void show_spider();
+void show_spider(void);
 
-void set_spider_left_legs_up();
+void set_spider_left_legs_up(void);
 
-void set_spider_right_legs_up();
+void set_spider_right_legs_up(void);
 
-void set_spider_left_legs_down();
+void set_spider_left_legs_down(void);
 
-void set_spider_right_legs_down();
+void set_spider_right_legs_down(void);
 
-void set_spider_graphics_descending();
+void set_spider_graphics_descending(void);
 
-void set_spider_graphics_ascending();
+void set_spider_graphics_ascending(void);
 
 void spawn_spider(spider_t *spider);
 
 void update_spider_location(spider_t *spider, basket_t *basket, uint16_t *score, uint8_t *game_state);
 
-void reset_spider_legs_props();
+void reset_spider_legs_props(void);
 
 #endif

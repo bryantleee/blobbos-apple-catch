@@ -4,11 +4,11 @@
 #include "arrow.h"
 #include "../res/warning_sprite.h"
 
-void init_warning_graphics() {
+void init_warning_graphics(void) {
     set_sprite_data(29, 1, warning_sprite);
 }
 
-void reset_warning() {
+void reset_warning(void) {
     hide_warning();
 }
 
@@ -22,6 +22,6 @@ void spawn_warning(arrow_t *arrow) {
     }
 }
 
-void hide_warning() {
+void hide_warning(void) {
     set_sprite_tile(WARNING_SPRITE, 18);
 } 

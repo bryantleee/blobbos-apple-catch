@@ -24,20 +24,20 @@ typedef struct {
     uint8_t speed, dangle_time;
 } apple_t;
 
-void init_apple_graphics();
+void init_apple_graphics(void);
 
 void reset_apple(apple_t *apple);
 
 void set_apple_sprite_location(uint16_t x, uint16_t y);
 
-void show_apple();
+void show_apple(void);
 
-void hide_apple();
+void hide_apple(void);
 
 void spawn_apple(apple_t *apple);
 
 void update_apple_location(apple_t *apple, basket_t *basket, uint16_t *score, uint8_t *game_state);
 
-void play_apple_caught_sound();
+void play_apple_caught_sound(void);
 
 #endif

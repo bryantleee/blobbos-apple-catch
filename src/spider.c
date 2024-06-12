@@ -5,7 +5,7 @@
 #include "game_over.h"
 #include "../res/spider_sprite.h"
 
-void init_spider_graphics() {
+void init_spider_graphics(void) {
     set_sprite_data(30, 3, spider_sprite);
 }
 
@@ -19,7 +19,7 @@ void reset_spider(spider_t *spider) {
     set_spider_graphics_descending();
 }
 
-void reset_spider_legs_props() {
+void reset_spider_legs_props(void) {
     // The spider is generated from three unique tiles
     //  and put together through horizontal and vertical reflection transformations
     set_sprite_prop(SPIDER_BODY_R, S_DEFAULT);
@@ -51,7 +51,7 @@ void set_spider_location(spider_t *spider) {
     }
 }
 
-void hide_spider() {
+void hide_spider(void) {
     set_sprite_tile(SPIDER_LEG_TIPS_L, 18);
     set_sprite_tile(SPIDER_LEG_L, 18);
     set_sprite_tile(SPIDER_BODY_L, 18);
@@ -60,7 +60,7 @@ void hide_spider() {
     set_sprite_tile(SPIDER_LEG_TIPS_R, 18);
 }
 
-void show_spider() {
+void show_spider(void) {
     set_sprite_tile(SPIDER_LEG_TIPS_L, 31);
     set_sprite_tile(SPIDER_LEG_L, 32);
     set_sprite_tile(SPIDER_BODY_L, 30);
@@ -69,35 +69,35 @@ void show_spider() {
     set_sprite_tile(SPIDER_LEG_TIPS_R, 31);
 }
 
-void set_spider_left_legs_up() {
+void set_spider_left_legs_up(void) {
     set_sprite_prop(SPIDER_BODY_R, S_DEFAULT);
     set_sprite_prop(SPIDER_LEG_R, S_DEFAULT);
     set_sprite_prop(SPIDER_LEG_TIPS_R, S_DEFAULT);
 }
 
-void set_spider_right_legs_up() {
+void set_spider_right_legs_up(void) {
     set_sprite_prop(SPIDER_BODY_R, S_FLIPX);
     set_sprite_prop(SPIDER_LEG_R, S_FLIPX);
     set_sprite_prop(SPIDER_LEG_TIPS_R, S_FLIPX);
 }
 
-void set_spider_left_legs_down() {
+void set_spider_left_legs_down(void) {
     set_sprite_prop(SPIDER_LEG_L, S_FLIPY);
     set_sprite_prop(SPIDER_LEG_TIPS_L, S_FLIPY);
 }
 
-void set_spider_right_legs_down() {
+void set_spider_right_legs_down(void) {
     set_sprite_prop(SPIDER_BODY_R, S_FLIPX);
     set_sprite_prop(SPIDER_LEG_R, S_FLIPXY);
     set_sprite_prop(SPIDER_LEG_TIPS_R, S_FLIPXY);
 }
 
-void set_spider_graphics_descending() {
+void set_spider_graphics_descending(void) {
     set_spider_left_legs_up();
     set_spider_right_legs_up();
 }
 
-void set_spider_graphics_ascending() {
+void set_spider_graphics_ascending(void) {
     set_spider_left_legs_down();
     set_spider_right_legs_down();
 }
