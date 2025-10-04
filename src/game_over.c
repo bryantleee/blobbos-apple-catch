@@ -4,7 +4,7 @@
 #include "game_over.h"
 #include "../res/game_over_text_tiles.h"
 #include "../res/retry_text_tiles.h"
-#include "../res/nature_tiles.h"
+#include "../res/nature_tiles_v2.h"
 
 void init_game_over_state(uint16_t *game_over_animation_timer) {
     set_bkg_data(0x73, GAME_OVER_TEXT_TILESET_COUNT, game_over_text_tileset);
@@ -33,7 +33,7 @@ void update_game_over(uint16_t *game_over_animation_timer) {
     }
     else if (*game_over_animation_timer == HALF_ANIMATION_CYCLE_TIME) {
         // Hide the text, replace it with the appropriate background tiles
-        set_bkg_tiles(RETRY_TEXT_X, RETRY_TEXT_Y, RETRY_TEXT_TILEMAP_WIDTH, RETRY_TEXT_TILEMAP_HEIGHT, nature_tilemap); 
+        set_bkg_tiles(RETRY_TEXT_X, RETRY_TEXT_Y, RETRY_TEXT_TILEMAP_WIDTH, RETRY_TEXT_TILEMAP_HEIGHT, nature_tiles_v2_tilemap); 
         (*game_over_animation_timer) --;
     }
     else {
