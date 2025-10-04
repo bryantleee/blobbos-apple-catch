@@ -95,7 +95,7 @@ void update_blobbo_location(blobbo_t *blobbo, uint8_t j_input) {
             blobbo->is_moving_down = TRUE;
         }
         else if (blobbo->state == HALF_CROUCH_STATE) {
-            // If we have spent enough time in the half crouch state 
+            // If we have spent enough time in the half crouch state
             // transition to the full crouch state
             if (blobbo->state_timer == 0) {
                 set_blobbo_crouching();
@@ -130,7 +130,7 @@ void update_blobbo_location(blobbo_t *blobbo, uint8_t j_input) {
                 blobbo->state_timer = 0;
                 blobbo->speed = BLOBBO_STAND_SPEED;
             }
-            else {  
+            else {
                 blobbo->state_timer --;
             }
         }

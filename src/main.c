@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <gbdk/platform.h>
 #include <gbdk/console.h>
 #include "blobbo.h"
@@ -31,11 +30,12 @@ bool start_pressed_last_frame;
 
 void main(void) {
     set_sgb_border();
+
     enter_intro_credits_state();
 
     init_title_screen(&game_state, &text_animation_timer);
     start_pressed_last_frame = FALSE;
-    
+
     // Main game loop
     while(TRUE) {
         const uint8_t j_input = joypad();

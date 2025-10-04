@@ -1,6 +1,7 @@
 #include <stdbool.h>
 #include <gbdk/platform.h>
 #include <gbdk/console.h>
+#include <gb/cgb.h>
 #include <rand.h>
 #include "utils.h"
 #include "blobbo.h"
@@ -13,6 +14,7 @@
 #include "intro.h"
 #include "pause.h"
 #include "game_over.h"
+#include "colors.h"
 #include "../res/nature_tiles.h"
 #include "../res/pause_text_tiles.h"
 #include "../res/game_over_text_tiles.h"
@@ -32,6 +34,27 @@ void init_gameplay_state_graphics(uint16_t *text_animation_timer) {
     init_spider_graphics();
     init_pause_state();
     init_game_over_state(text_animation_timer);
+
+    setup_cgb();
+}
+
+void setup_cgb() {
+    if (_cpu == CGB_TYPE) {
+        set_default_palette();
+        const uint16_t bar_p[] =
+        {
+          bar_cCGBPal0c0,bar_cCGBPal0c1,bar_cCGBPal0c2,bar_cCGBPal0c3,
+          bar_cCGBPal1c0,bar_cCGBPal1c1,bar_cCGBPal1c2,bar_cCGBPal1c3,
+          bar_cCGBPal2c0,bar_cCGBPal2c1,bar_cCGBPal2c2,bar_cCGBPal2c3,
+          bar_cCGBPal3c0,bar_cCGBPal3c1,bar_cCGBPal3c2,bar_cCGBPal3c3,
+          bar_cCGBPal4c0,bar_cCGBPal4c1,bar_cCGBPal4c2,bar_cCGBPal4c3,
+          bar_cCGBPal5c0,bar_cCGBPal5c1,bar_cCGBPal5c2,bar_cCGBPal5c3,
+          bar_cCGBPal6c0,bar_cCGBPal6c1,bar_cCGBPal6c2,bar_cCGBPal6c3,
+          bar_cCGBPal7c0,bar_cCGBPal7c1,bar_cCGBPal7c2,bar_cCGBPal7c3
+        };
+        set_bkg_palette(0, 8, bar_p);
+        set_sprite_palette(0, 8, bar_p);
+    }
 }
 
 void init_sound(void) {
@@ -77,6 +100,7 @@ void init_gameplay_state(uint16_t *text_animation_timer) {
     SPRITES_8x8;
     SHOW_SPRITES;
     SHOW_BKG;
+    enable_interrupts();
     init_sound();
     init_random();
     set_bkg_data(0, NATURE_TILES_COUNT, nature_tileset);
@@ -89,7 +113,7 @@ void play_start_button_noise(void) {
         unless interrupted by another sound. Therefore, we just won't play this sound on the Analogue Pocket
         until we find a solution.
     */
-    #if defined(__TARGET_gb) 
+    #if defined(__TARGET_gb)
     NR10_REG = 0x23;
     NR11_REG = 0xBA;
     NR12_REG = 0x6B;
