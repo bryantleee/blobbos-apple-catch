@@ -55,7 +55,7 @@ uint16_t get_random_number(uint16_t min, uint16_t max) {
 }
 
 void enter_gameplay_state(blobbo_t *blobbo, basket_t *basket, apple_t *apple, arrow_t *arrow, spider_t *spider, uint8_t *game_state, uint16_t *score) {
-    set_bkg_tiles(0, 0, NATURE_TILES_V2_WIDTH, NATURE_TILES_V2_HEIGHT, nature_tilemap);
+    set_bkg_tiles(0, 0, NATURE_TILES_V2_WIDTH, NATURE_TILES_V2_HEIGHT, nature_tiles_v2_tilemap);
     play_start_button_noise();
     reset_blobbo(blobbo);
     reset_basket(basket, blobbo);
@@ -79,7 +79,7 @@ void init_gameplay_state(uint16_t *text_animation_timer) {
     SHOW_BKG;
     init_sound();
     init_random();
-    set_bkg_data(0, NATURE_TILES_V2_COUNT, nature_tileset);
+    set_bkg_data(0, NATURE_TILES_V2_COUNT, nature_tiles_v2_tileset);
     init_gameplay_state_graphics(text_animation_timer);
     DISPLAY_ON;
 }
